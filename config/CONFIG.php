@@ -31,6 +31,6 @@ class CONFIG {
     static $DATABASE_HOST 	= '216.172.172.200';
     static $DATABASE_USER 	= 'ofcelc59_base';
     static $DATABASE_PASSWD = 'NiB94avfRTIzyBd';
-    static $DATABASE_NAME 	= 'ilumemais';
+    static $DATABASE_NAME 	= 'ofcelc59_raiz';
 
 }
