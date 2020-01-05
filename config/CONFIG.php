@@ -28,9 +28,9 @@ class CONFIG {
     /*
      * Database
      */
-    static $DATABASE_HOST 	= 'ilumemais.mysql.dbaas.com.br';
-    static $DATABASE_USER 	= 'ilumemais';
-    static $DATABASE_PASSWD = 'InfoDmz616';
+    static $DATABASE_HOST 	= '216.172.172.200';
+    static $DATABASE_USER 	= 'ofcelc59_base';
+    static $DATABASE_PASSWD = 'NiB94avfRTIzyBd';
     static $DATABASE_NAME 	= 'ilumemais';
 
 }
