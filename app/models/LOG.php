@@ -1,6 +1,6 @@
 <?php
 
-class LOG
+class Log
 {
 
     private $conn;

@@ -1,6 +1,6 @@
 <?php
 
-class PERMISSION
+class Permission
 {
 
     private $conn;
