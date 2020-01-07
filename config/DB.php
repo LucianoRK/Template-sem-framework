@@ -5,7 +5,7 @@ class DB {
     private static $instance;
     private $link;
 
-    protected function __construct() {
+    function __construct() {
         if (empty($this->link)) {
             try {
                 $this->link = new PDO("mysql:host=" . CONFIG::$DATABASE_HOST . ';port=3306;dbname=' . CONFIG::$DATABASE_NAME, CONFIG::$DATABASE_USER, CONFIG::$DATABASE_PASSWD);
