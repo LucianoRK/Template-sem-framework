@@ -6,6 +6,7 @@ class CURRENCY
     static function moedaBrParaMysql($valor)
     {
         $valor2 = str_replace('.', '', $valor);
+        
         return str_replace(',', '.', $valor2);
     }
 
@@ -18,6 +19,7 @@ class CURRENCY
     {
         $valor_final = $valor * 100;
         $valor2 = str_replace('.', '', $valor_final);
+
         return str_replace(',', '', $valor2);
     }
 

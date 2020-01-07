@@ -2,12 +2,12 @@
 
 class DATE
 {
-    public static function mysqlToDate($date)
+    static function mysqlToDate($date)
     {
         return date("d/m/Y", strtotime($date));
     }
 
-    public static function dateToMysql($date)
+    static function dateToMysql($date)
     {
         $explode = explode("/", $date);
         if (count($explode) === 3) {
@@ -22,10 +22,11 @@ class DATE
         }
     }
 
-    public static function timestampToUtc($dt)
+    static function timestampToUtc($dt)
     {
         $date = new DateTime($dt, new DateTimeZone('America/Sao_Paulo'));
         $data = $date->format("Y-m-d\TH:i:sP");
+
         return $data;
     }
 }
