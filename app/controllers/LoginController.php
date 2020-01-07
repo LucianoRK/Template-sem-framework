@@ -1,11 +1,9 @@
 <?php
 
-namespace ControladorLogin;
-
-class LoginController
+class loginController
 {
 
-    public static function login()
+    public function login()
     {
         echo "<h1> LOGIN </h1>";
     }
