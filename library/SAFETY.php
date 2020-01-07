@@ -1,8 +1,10 @@
 <?php
 
-class SEGURANCA {
+class SAFETY
+{
 
-    static function password_hash($senha) {
+    static function password_hash($senha)
+    {
         if ($senha) {
             return password_hash($senha, PASSWORD_DEFAULT);
         } else {
@@ -10,12 +12,12 @@ class SEGURANCA {
         }
     }
 
-    static function password_verify($senha, $hash) {
+    static function password_verify($senha, $hash)
+    {
         if ($senha) {
             return password_verify($senha, $hash);
         } else {
             return false;
         }
     }
-
 }

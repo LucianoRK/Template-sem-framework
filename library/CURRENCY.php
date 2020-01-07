@@ -1,6 +1,6 @@
 <?php
 
-class MOEDA
+class CURRENCY
 {
 
     static function moedaBrParaMysql($valor)
@@ -28,8 +28,8 @@ class MOEDA
 
     static function intToMysql($valor)
     {
-        $valor2 = MOEDA::moedaMysqlParaBr($valor);
+        $valor2 = CURRENCY::moedaMysqlParaBr($valor);
 
-        return MOEDA::moedaBrParaMysql($valor2);
+        return CURRENCY::moedaBrParaMysql($valor2);
     }
 }
