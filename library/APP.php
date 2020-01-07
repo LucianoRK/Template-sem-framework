@@ -3,7 +3,7 @@
 class APP
 {
 
-    static function return_response($result, $message)
+    static function returnResponse($result, $message)
     {
         $response['result']  = $result;
         $response['message'] = $message;

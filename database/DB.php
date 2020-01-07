@@ -13,7 +13,7 @@ class DB {
                 $this->link->query('SET NAMES utf8');
                 $this->link->query('SET CHARACTER SET utf8');
             } catch (PDOException $error) {
-                APP::return_response(false, "Connection error");
+                APP::returnResponse(false, "Connection error");
             }
         }
     }
@@ -36,7 +36,7 @@ class DB {
             $sth->execute();
         } catch (PDOException $exc) {
             LOG::writeLog($query);
-            APP::return_response(false, $exc->getMessage());
+            APP::returnResponse(false, $exc->getMessage());
         }
     }
 
@@ -46,7 +46,7 @@ class DB {
             return $sth->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $exc) {
             LOG::writeLog($query);
-            APP::return_response(false, $exc->getMessage());
+            APP::returnResponse(false, $exc->getMessage());
         }
     }
 
@@ -56,7 +56,7 @@ class DB {
             return $sth->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $exc) {
             LOG::writeLog($query);
-            APP::return_response(false, $exc->getMessage());
+            APP::returnResponse(false, $exc->getMessage());
         }
     }
 
@@ -71,7 +71,7 @@ class DB {
             }
         } catch (PDOException $exc) {
             LOG::writeLog($query);
-            APP::return_response(false, $exc->getMessage());
+            APP::returnResponse(false, $exc->getMessage());
         }
     }
 
