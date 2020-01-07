@@ -10,5 +10,15 @@ class CONTROLLER
         require 'app/views/' . $viewName . '.php';
     }
 
-    
+    static function loadTemplate($viewName, $dados = array())
+    {
+        include 'public/matriz/topo.php';
+        include 'public/matriz/footer.php';
+    }
+
+    static function loadViewInTemplate($viewName, $dados = array())
+    {
+        extract($dados);
+        require 'app/views/' . $viewName . '.php';
+    }
 }

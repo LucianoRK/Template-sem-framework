@@ -3,9 +3,9 @@
 class homeController extends CONTROLLER
 {
 
-    public function index()
+    function index()
     {
         $dados = array();
-        $this->loadView('home/home', $dados);
+        $this->loadTemplate('home/home', $dados);
     }
 }

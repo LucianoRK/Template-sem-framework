@@ -174,6 +174,7 @@
                 </form>
                 <!--END TOP TOOLBAR SEARCH -->
             </nav>
+            <?php CONTROLLER::loadViewInTemplate($viewName, $dados); ?>
         </div>
     </div>
 </body>
