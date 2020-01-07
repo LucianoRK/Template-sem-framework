@@ -1,10 +1,11 @@
 <?php
 
-class loginController
+class loginController extends CONTROLLER
 {
 
-    public function login()
+    public function index()
     {
-        echo "<h1> LOGIN </h1>";
+        $dados = array();
+        $this->loadView('login/login', $dados);
     }
 }

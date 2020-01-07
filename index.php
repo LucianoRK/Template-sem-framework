@@ -12,13 +12,18 @@ function autoload($class)
     if (is_readable(dirname(__FILE__) . '/app/models/' . $class . ".php")) {
         include(dirname(__FILE__) . '/app/models/' . $class . ".php");
     }
-    if (is_readable(dirname(__FILE__) . '/config/' . $class . ".php")) {
-        include(dirname(__FILE__) . '/config/' . $class . ".php");
+    if (is_readable(dirname(__FILE__) . '/database/' . $class . ".php")) {
+        include(dirname(__FILE__) . '/database/' . $class . ".php");
     }
-    if (is_readable(dirname(__FILE__) . '/Library/' . $class . ".php")) {
-        include(dirname(__FILE__) . '/Library/' . $class . ".php");
+    if (is_readable(dirname(__FILE__) . '/library/' . $class . ".php")) {
+        include(dirname(__FILE__) . '/library/' . $class . ".php");
     }
 }
 
-$core = new Core();
-$core->run();
+// include 'public/matriz/topo.php';
+// include 'public/matriz/footer.php';
+
+CORE::run();
+
+
+    
