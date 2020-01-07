@@ -26,9 +26,10 @@ class MOEDA
         return self::moedaBrParaMysql($reais) * 100;
     }
 
-    static function int_to_mysql($valor)
+    static function intToMysql($valor)
     {
         $valor2 = MOEDA::moedaMysqlParaBr($valor);
+
         return MOEDA::moedaBrParaMysql($valor2);
     }
 }
