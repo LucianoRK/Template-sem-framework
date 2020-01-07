@@ -60,7 +60,7 @@ class DB {
         }
     }
 
-    public function fetch_attr($query, $attribute) {
+    function fetch_attr($query, $attribute) {
         try {
             $sth = $this->link->query($query);
             $result = $sth->fetch(PDO::FETCH_ASSOC);
