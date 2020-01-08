@@ -8,6 +8,10 @@ class CORE
         $params = array();
 
         if (isset($_GET['url'])) {
+            if( substr($_GET['url'], -1) == "/"){
+                require 'notfound.php';
+            }
+
             $url .= $_GET['url'];
         }
 

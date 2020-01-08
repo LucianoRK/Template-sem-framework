@@ -33,4 +33,15 @@ class CONFIG {
     static $DATABASE_PASSWD = 'NiB94avfRTIzyBd';
     static $DATABASE_NAME 	= 'ofcelc59_raiz';
 
+    /*
+     * BASE_URL
+     */
+    static function getBaseUrl()
+    {
+        if ($_SERVER['HTTP_HOST'] == "localhost") { 
+            return 'http://localhost/raiz';
+         } else {
+            return '';
+        }
+    }
 }
