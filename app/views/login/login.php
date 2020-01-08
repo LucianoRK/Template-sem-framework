@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title> <?php echo CONFIG::$PROJECT_NAME; ?> | Sign In </title>
+	<title> <?php echo CONFIG::$PROJECT_NAME; ?> | Fazer login </title>
 	<!-- ================== GOOGLE FONTS ==================-->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500" rel="stylesheet">
 	<!-- ======================= GLOBAL VENDOR STYLES ========================-->
@@ -31,31 +31,30 @@
 
 <body>
 	<div class="container">
-		<form class="sign-in-form" action="index.html">
+		<form class="sign-in-form" action="">
 			<div class="card">
 				<div class="card-body">
-					<a href="index.html" class="brand text-center d-block m-b-20">
+					<a href="" class="brand text-center d-block m-b-20">
 						<img src="public/assets/img/qt-logo@2x.png" alt="QuantumPro Logo" />
 					</a>
-					<h5 class="sign-in-heading text-center m-b-20">Sign in to your account</h5>
+					<h5 class="sign-in-heading text-center m-b-20">Entre com sua conta</h5>
 					<div class="form-group">
-						<label for="inputEmail" class="sr-only">Email address</label>
-						<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="">
+						<label for="inputEmail" class="sr-only">E-mail</label>
+						<input type="email" id="inputEmail" class="form-control" placeholder="E-mail" required="">
 					</div>
 
 					<div class="form-group">
-						<label for="inputPassword" class="sr-only">Password</label>
-						<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+						<label for="inputPassword" class="sr-only">Senha</label>
+						<input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
 					</div>
 					<div class="checkbox m-b-10 m-t-20">
 						<div class="custom-control custom-checkbox checkbox-primary form-check">
 							<input type="checkbox" class="custom-control-input" id="stateCheck1" checked="">
-							<label class="custom-control-label" for="stateCheck1">	Remember me</label>
+							<label class="custom-control-label" for="stateCheck1">	Lembrar-me</label>
 						</div>
-						<a href="auth.forgot-password.html" class="float-right">Forgot Password?</a>
+						<a href="" class="float-right">Esqueceu sua senha ?</a>
 					</div>
-					<button class="btn btn-primary btn-rounded btn-floating btn-lg btn-block" type="submit">Sign In</button>
-				 <p class="text-muted m-t-25 m-b-0 p-0">Don't have an account yet?<a href="auth.register.html"> Create an account</a></p>
+					<button class="btn btn-primary btn-rounded btn-floating btn-lg btn-block" type="submit">Entrar</button>
 				</div>
 
 			</div>
