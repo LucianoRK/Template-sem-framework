@@ -5,7 +5,7 @@ class CORE
     static function run()
     {
         $url = '/';
-        $params = [];
+        $params = array();
 
         if (isset($_GET['url'])) {
             $url .= $_GET['url'];
@@ -33,13 +33,19 @@ class CORE
             $currentAction     = 'index';
         }
 
-        $existeController = "app/controllers/".$currentController.".php";
+        $existeController = "app/controllers/" . $currentController . ".php";
+
 
         if (file_exists($existeController)) {
             $c = new $currentController();
-            call_user_func_array(array($c, $currentAction), $params);
+
+            if (method_exists($currentController, $currentAction)) {
+                call_user_func_array(array($c, $currentAction), $params);
+            } else {
+                require 'notfound.php';
+            }
         } else {
-            die("Pagina não encontrada");
+            require 'notfound.php';
         }
     }
 }

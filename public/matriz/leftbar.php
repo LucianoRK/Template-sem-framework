@@ -4,7 +4,7 @@
             <ul class="nav metismenu">
                 <li class="sidebar-header"><span>NAVIGATION</span></li>
                 <li class="nav-dropdown">
-                    <li><a href=""><i class="icon dripicons-home"></i><span> Home </span></a></li>
+                    <li><a href="/raiz"><i class="icon dripicons-home"></i><span> Inicio </span></a></li>
                 </li>
 
                 <li class="nav-dropdown">
