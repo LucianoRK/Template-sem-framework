@@ -39,7 +39,6 @@ class CORE
 
         $existeController = "app/controllers/" . $currentController . ".php";
 
-
         if (file_exists($existeController)) {
             $c = new $currentController();
 
