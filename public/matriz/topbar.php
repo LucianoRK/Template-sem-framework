@@ -31,6 +31,9 @@
     <!-- ======================= THEME COLOR STYLES ===========================-->
     <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-i.css">
 
+    <!-- ======================= SELECT 02 ===========================-->
+    <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/select2/select2.min.css">
+
     <!-- ================== GLOBAL VENDOR SCRIPTS ==================-->
     <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/modernizr/modernizr.custom.js"></script>
     <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -41,6 +44,10 @@
     <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/metismenu/dist/metisMenu.js"></script>
     <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/switchery-npm/index.js"></script>
     <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!-- ======================= SELECT 02 ===========================-->
+    <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/components/select2-init.js"></script>
+    <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/select2/select2.min.js"></script>
 </head>
 
 <body class="content-menu">
