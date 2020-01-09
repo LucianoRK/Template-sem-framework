@@ -3,19 +3,18 @@
 class loginController extends CONTROLLER
 {
 
-    function index()
+    function index($dados = false)
     {
-        $dados = array();
-        $this->loadViewInTemplate('login/login', $dados);
+        if (!isset($dados) || empty($dados)) {
+            $dados = array();
+        }
+
+        $this->loadView('login/login', $dados);
     }
 
     function logInto()
     {
         $dados = array();
-
-        $url = '/'.$_GET['url'];
-       print_r($url);
-        die();
 
         if (VALIDATION::post('email') && VALIDATION::post('senha')) {
             $email_digitado = VALIDATION::post('email');
@@ -29,20 +28,18 @@ class loginController extends CONTROLLER
                 $_SESSION['nome']    = $usuario['nome'];
                 $_SESSION['email']   = $usuario['email'];
 
-                header('Location: /raiz');
+                CONTROLLER::redirectPage("/home");
             } else {
                 $dados = array(
                     "error" => "O endereço de email ou a senha que você inseriu não é válido",
                 );
-                $this->loadViewInTemplate('login/login', $dados);
+                $this->index($dados);
             }
         } else {
-            die("a");
-
             $dados = array(
                 "error" => "O endereço de email ou a senha que você inseriu não é válido",
             );
-            $this->loadViewInTemplate('login/login', $dados);
+            $this->index($dados);
         }
     }
 }

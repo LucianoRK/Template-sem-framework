@@ -149,7 +149,7 @@
                         </div>
                         <a class="dropdown-item" href="pages.my-account.html"><i class="icon dripicons-gear"></i> Minha Conta </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="auth.sign-in.html"><i class="icon dripicons-lock-open"></i> Sair </a>
+                        <a class="dropdown-item" href="<?php echo CONFIG::getBaseUrl(); ?>/sair"><i class="icon dripicons-lock-open"></i> Sair </a>
                     </div>
                 </li>
 

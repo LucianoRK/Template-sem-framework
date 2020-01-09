@@ -1,19 +1,18 @@
 <?php
-
 class CORE
 {
+
     static function run()
     {
+
         $url = '/';
-        $params = array();
-
         if (isset($_GET['url'])) {
-            if( substr($_GET['url'], -1) == "/"){
-                require 'notfound.php';
-            }
-
             $url .= $_GET['url'];
         }
+
+        $url = self::checkRoutes($url);
+
+        $params = array();
 
         if (!empty($url) && $url != '/') {
             $url = explode('/', $url);
@@ -34,21 +33,56 @@ class CORE
             }
         } else {
             $currentController = 'homeController';
+            $currentAction = 'index';
+        }
+
+        if (!file_exists('app/controllers/' . $currentController . '.php') || !method_exists($currentController, $currentAction)) {
+            $currentController = 'notfoundController';
             $currentAction     = 'index';
         }
 
-        $existeController = "app/controllers/" . $currentController . ".php";
+        $c = new $currentController();
 
-        if (file_exists($existeController)) {
-            $c = new $currentController();
+        call_user_func_array(array($c, $currentAction), $params);
+    }
 
-            if (method_exists($currentController, $currentAction)) {
-                call_user_func_array(array($c, $currentAction), $params);
-            } else {
-                require 'notfound.php';
+    static function checkRoutes($url)
+    {
+        global $routes;
+
+        foreach ($routes as $pt => $newurl) {
+
+            // Identifica os argumentos e substitui por regex
+            $pattern = preg_replace('(\{[a-z0-9]{1,}\})', '([a-z0-9-]{1,})', $pt);
+
+            // Faz o match da URL
+            if (preg_match('#^(' . $pattern . ')*$#i', $url, $matches) === 1) {
+                array_shift($matches);
+                array_shift($matches);
+
+                // Pega todos os argumentos para associar
+                $itens = array();
+                if (preg_match_all('(\{[a-z0-9]{1,}\})', $pt, $m)) {
+                    $itens = preg_replace('(\{|\})', '', $m[0]);
+                }
+
+                // Faz a associação
+                $arg = array();
+                foreach ($matches as $key => $match) {
+                    $arg[$itens[$key]] = $match;
+                }
+
+                // Monta a nova url
+                foreach ($arg as $argkey => $argvalue) {
+                    $newurl = str_replace(':' . $argkey, $argvalue, $newurl);
+                }
+
+                $url = $newurl;
+
+                break;
             }
-        } else {
-            require 'notfound.php';
         }
+
+        return $url;
     }
 }

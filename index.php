@@ -4,6 +4,8 @@ session_start();
 set_time_limit(60);
 spl_autoload_register("autoload");
 
+require 'router.php';
+
 function autoload($class)
 {
     if (is_readable(dirname(__FILE__) . "/app/controllers/" . $class . ".php")) {
@@ -20,10 +22,6 @@ function autoload($class)
     }
 }
 
-// include 'public/matriz/topo.php';
-// include 'public/matriz/footer.php';
-
 CORE::run();
-
 
     

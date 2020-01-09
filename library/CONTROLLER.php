@@ -21,4 +21,10 @@ class CONTROLLER
         extract($dados);
         require 'app/views/' . $viewName . '.php';
     }
+
+    static function redirectPage($page)
+    {
+        $base_url = CONFIG::getBaseUrl();
+        return header("Location: $base_url$page");
+    }
 }

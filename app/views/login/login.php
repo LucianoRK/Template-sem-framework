@@ -40,7 +40,7 @@
 	<?php } ?>
 
 	<div class="container">
-		<form class="sign-in-form" action="login/logInto" method="POST">
+		<form class="sign-in-form" action="<?php echo CONFIG::getBaseUrl(); ?>/entrando/sistema" method="POST">
 			<div class="card">
 				<div class="card-body">
 					<a href="" class="brand text-center d-block m-b-20">

@@ -8,7 +8,7 @@ class VALIDATION
         if (isset($_POST[ "$name" ]) && !empty($_POST[ "$name" ])) {
             return $_POST[ "$name" ];
         } else {
-             return null;
+             return false;
         }
     }
 
@@ -17,7 +17,7 @@ class VALIDATION
         if (isset($_POST[ "$post" ]) && !empty($_POST[ "$post" ])) {
             return $_POST[ "$post" ];
         } else {
-             return null;
+             return false;
         }
     }
 }
