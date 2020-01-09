@@ -24,8 +24,8 @@ $qtd = 1;
                                 <td><?php echo $dado['nome'] ?></td>
                                 <td class="text-center"><?php echo $dado['quantidade_acesso'] ?></td>
                                 <td></td>
-                            <tr>
-                            <?php } ?>
+                        </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
