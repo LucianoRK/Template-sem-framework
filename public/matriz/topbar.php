@@ -30,6 +30,17 @@
     <link rel="stylesheet" href="public/assets/css/layouts/vertical/menu-type/content.css">
     <!-- ======================= THEME COLOR STYLES ===========================-->
     <link rel="stylesheet" href="public/assets/css/layouts/vertical/themes/theme-i.css">
+
+    <!-- ================== GLOBAL VENDOR SCRIPTS ==================-->
+    <script src="public/assets/vendor/modernizr/modernizr.custom.js"></script>
+    <script src="public/assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="public/assets/vendor/js-storage/js.storage.js"></script>
+    <script src="public/assets/vendor/js-cookie/src/js.cookie.js"></script>
+    <script src="public/assets/vendor/pace/pace.js"></script>
+    <script src="public/assets/vendor/metismenu/dist/metisMenu.js"></script>
+    <script src="public/assets/vendor/switchery-npm/index.js"></script>
+    <script src="public/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 </head>
 
 <body class="content-menu">
@@ -405,16 +416,7 @@
             <!-- END SIDEBAR QUICK PANNEL WRAPPER -->
         </div>
         <!-- END CONTENT WRAPPER -->
-        <!-- ================== GLOBAL VENDOR SCRIPTS ==================-->
-        <script src="public/assets/vendor/modernizr/modernizr.custom.js"></script>
-        <script src="public/assets/vendor/jquery/dist/jquery.min.js"></script>
-        <script src="public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="public/assets/vendor/js-storage/js.storage.js"></script>
-        <script src="public/assets/vendor/js-cookie/src/js.cookie.js"></script>
-        <script src="public/assets/vendor/pace/pace.js"></script>
-        <script src="public/assets/vendor/metismenu/dist/metisMenu.js"></script>
-        <script src="public/assets/vendor/switchery-npm/index.js"></script>
-        <script src="public/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
         <!-- ================== PAGE LEVEL VENDOR SCRIPTS ==================-->
         <script src="public/assets/vendor/countup.js/dist/countUp.min.js"></script>
         <script src="public/assets/vendor/chart.js/dist/Chart.bundle.min.js"></script>
