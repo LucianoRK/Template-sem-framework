@@ -7,8 +7,9 @@ class userController extends CONTROLLER
         if (!isset($dados) || empty($dados)) {
             $dados = array();
         }
-        $dados = new User;
-        $this->loadTemplate('user/user', $dados->getAllUserCompany(1));
+        
+        $user = new User;
+        $dados['user'] = $user->getAllUserCompany(1);
+        $this->loadTemplate('user/user', $dados);
     }
-
 }

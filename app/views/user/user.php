@@ -17,14 +17,14 @@ $qtd = 1;
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($dados as $dado) { ?>
+                        <?php foreach ($dados['user'] as $dado) { ?>
                             <tr>
                                 <td><?php echo $qtd++ ?></td>
                                 <td></td>
                                 <td><?php echo $dado['nome'] ?></td>
                                 <td class="text-center"><?php echo $dado['quantidade_acesso'] ?></td>
                                 <td></td>
-                        </tr>
+                            </tr>
                         <?php } ?>
                     </tbody>
                 </table>
