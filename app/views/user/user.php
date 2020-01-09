@@ -1,5 +1,5 @@
-<?php 
-    $qtd = 1;
+<?php
+$qtd = 1;
 ?>
 <div class="row">
     <div class="col">
@@ -18,12 +18,14 @@
                     </thead>
                     <tbody>
                         <?php foreach ($dados as $dado) { ?>
-                            <td><?php echo $qtd++ ?></td>
-                            <td><?php echo $dado['nome'] ?></td>
-                            <td></td>
-                            <td class="text-center"><?php echo $dado['quantidade_acesso'] ?></td>
-                            <td></td>
-                        <?php } ?>
+                            <tr>
+                                <td><?php echo $qtd++ ?></td>
+                                <td></td>
+                                <td><?php echo $dado['nome'] ?></td>
+                                <td class="text-center"><?php echo $dado['quantidade_acesso'] ?></td>
+                                <td></td>
+                            <tr>
+                            <?php } ?>
                     </tbody>
                 </table>
             </div>
