@@ -25,4 +25,18 @@ class User
 
         return $this->conn->fetch($q);
     }
+
+    function getAllUserCompany($company)
+    {
+        $q = "
+            SELECT 
+                *
+            FROM 
+                tb_usuarios
+            WHERE TRUE
+                AND fk_empresa = '{$company}'
+        ";
+
+        return $this->conn->fetch_all($q);
+    }
 }
