@@ -9,38 +9,38 @@
     <!-- ================== GOOGLE FONTS ==================-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500" rel="stylesheet">
     <!-- ======================= GLOBAL VENDOR STYLES ========================-->
-    <link rel="stylesheet" href="public/assets/css/vendor/bootstrap.css">
-    <link rel="stylesheet" href="public/assets/vendor/metismenu/dist/metisMenu.css">
-    <link rel="stylesheet" href="public/assets/vendor/switchery-npm/index.css">
-    <link rel="stylesheet" href="public/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/vendor/bootstrap.css">
+    <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/metismenu/dist/metisMenu.css">
+    <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/switchery-npm/index.css">
+    <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
     <!-- ======================= LINE AWESOME ICONS ===========================-->
-    <link rel="stylesheet" href="public/assets/css/icons/line-awesome.min.css">
-    <link rel="stylesheet" href="public/assets/css/icons/simple-line-icons.css">
+    <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/icons/line-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/icons/simple-line-icons.css">
     <!-- ======================= DRIP ICONS ===================================-->
-    <link rel="stylesheet" href="public/assets/css/icons/dripicons.min.css">
+    <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/icons/dripicons.min.css">
     <!-- ======================= MATERIAL DESIGN ICONIC FONTS =================-->
-    <link rel="stylesheet" href="public/assets/css/icons/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/icons/material-design-iconic-font.min.css">
     <!-- ======================= PAGE VENDOR STYLES ===========================-->
-    <link rel="stylesheet" href="public/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
     <!-- ======================= GLOBAL COMMON STYLES ============================-->
-    <link rel="stylesheet" href="public/assets/css/common/main.bundle.css">
+    <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/common/main.bundle.css">
     <!-- ======================= LAYOUT TYPE ===========================-->
-    <link rel="stylesheet" href="public/assets/css/layouts/vertical/core/main.css">
+    <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/core/main.css">
     <!-- ======================= MENU TYPE ===========================-->
-    <link rel="stylesheet" href="public/assets/css/layouts/vertical/menu-type/content.css">
+    <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/menu-type/content.css">
     <!-- ======================= THEME COLOR STYLES ===========================-->
-    <link rel="stylesheet" href="public/assets/css/layouts/vertical/themes/theme-i.css">
+    <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-i.css">
 
     <!-- ================== GLOBAL VENDOR SCRIPTS ==================-->
-    <script src="public/assets/vendor/modernizr/modernizr.custom.js"></script>
-    <script src="public/assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="public/assets/vendor/js-storage/js.storage.js"></script>
-    <script src="public/assets/vendor/js-cookie/src/js.cookie.js"></script>
-    <script src="public/assets/vendor/pace/pace.js"></script>
-    <script src="public/assets/vendor/metismenu/dist/metisMenu.js"></script>
-    <script src="public/assets/vendor/switchery-npm/index.js"></script>
-    <script src="public/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/modernizr/modernizr.custom.js"></script>
+    <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/js-storage/js.storage.js"></script>
+    <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/js-cookie/src/js.cookie.js"></script>
+    <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/pace/pace.js"></script>
+    <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/metismenu/dist/metisMenu.js"></script>
+    <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/switchery-npm/index.js"></script>
+    <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 </head>
 
 <body class="content-menu">
@@ -146,12 +146,12 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img src="public/assets/img/avatars/1.jpg" class="w-35 rounded-circle" alt="Albert Einstein">
+                        <img src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/img/avatars/1.jpg" class="w-35 rounded-circle" alt="Albert Einstein">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-accout">
                         <div class="dropdown-header pb-3">
                             <div class="media d-user">
-                                <img class="align-self-center mr-3 w-40 rounded-circle" src="public/assets/img/avatars/1.jpg" alt="Albert Einstein">
+                                <img class="align-self-center mr-3 w-40 rounded-circle" src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/img/avatars/1.jpg" alt="Albert Einstein">
                                 <div class="media-body">
                                     <h5 class="mt-0 mb-0">Albert Einstein</h5>
                                     <span>support@authenticgoods.co</span>
@@ -195,7 +195,7 @@
                                     <div class="row m-0">
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-a.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-a.css">
+                                                <h6 class="title text-center">theme-a.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-a.css">
                                                     <input type="radio" name="setting-theme" checked="checked">
                                                     <span class="icon-check dark"></span>
                                                     <span class="split">
@@ -207,7 +207,7 @@
                                         </div>
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-b.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-b.css">
+                                                <h6 class="title text-center">theme-b.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-b.css">
                                                     <input type="radio" name="setting-theme">
                                                     <span class="icon-check"></span>
                                                     <span class="split">
@@ -219,7 +219,7 @@
                                         </div>
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-c.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-c.css">
+                                                <h6 class="title text-center">theme-c.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-c.css">
                                                     <input type="radio" name="setting-theme">
                                                     <span class="icon-check"></span>
                                                     <span class="split">
@@ -231,7 +231,7 @@
                                         </div>
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-d.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-d.css">
+                                                <h6 class="title text-center">theme-d.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-d.css">
                                                     <input type="radio" name="setting-theme">
                                                     <span class="icon-check"></span>
                                                     <span class="split">
@@ -243,7 +243,7 @@
                                         </div>
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-e.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-e.css">
+                                                <h6 class="title text-center">theme-e.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-e.css">
                                                     <input type="radio" name="setting-theme">
                                                     <span class="icon-check"></span>
                                                     <span class="split">
@@ -255,7 +255,7 @@
                                         </div>
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-f.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-f.css">
+                                                <h6 class="title text-center">theme-f.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-f.css">
                                                     <input type="radio" name="setting-theme">
                                                     <span class="icon-check"></span>
                                                     <span class="split">
@@ -267,7 +267,7 @@
                                         </div>
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-g.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-g.css">
+                                                <h6 class="title text-center">theme-g.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-g.css">
                                                     <input type="radio" name="setting-theme">
                                                     <span class="icon-check"></span>
                                                     <span class="split">
@@ -279,7 +279,7 @@
                                         </div>
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-h.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-h.css">
+                                                <h6 class="title text-center">theme-h.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-h.css">
                                                     <input type="radio" name="setting-theme">
                                                     <span class="icon-check"></span>
                                                     <span class="split">
@@ -294,7 +294,7 @@
                                     <div class="row m-0">
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-i.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-i.css">
+                                                <h6 class="title text-center">theme-i.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-i.css">
                                                     <input type="radio" name="setting-theme">
                                                     <span class="icon-check"></span>
                                                     <span class="split">
@@ -306,7 +306,7 @@
                                         </div>
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-j.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-j.css">
+                                                <h6 class="title text-center">theme-j.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-j.css">
                                                     <input type="radio" name="setting-theme">
                                                     <span class="icon-check"></span>
                                                     <span class="split">
@@ -318,7 +318,7 @@
                                         </div>
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-k.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-k.css">
+                                                <h6 class="title text-center">theme-k.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-k.css">
                                                     <input type="radio" name="setting-theme">
                                                     <span class="icon-check"></span>
                                                     <span class="split">
@@ -330,7 +330,7 @@
                                         </div>
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-l.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-l.css">
+                                                <h6 class="title text-center">theme-l.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-l.css">
                                                     <input type="radio" name="setting-theme">
                                                     <span class="icon-check"></span>
                                                     <span class="split">
@@ -342,7 +342,7 @@
                                         </div>
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-m.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-m.css">
+                                                <h6 class="title text-center">theme-m.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-m.css">
                                                     <input type="radio" name="setting-theme">
                                                     <span class="icon-check"></span>
                                                     <span class="split">
@@ -354,7 +354,7 @@
                                         </div>
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-n.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-n.css">
+                                                <h6 class="title text-center">theme-n.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-n.css">
                                                     <input type="radio" name="setting-theme">
                                                     <span class="icon-check"></span>
                                                     <span class="split">
@@ -366,7 +366,7 @@
                                         </div>
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-o.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-o.css">
+                                                <h6 class="title text-center">theme-o.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-o.css">
                                                     <input type="radio" name="setting-theme">
                                                     <span class="icon-check"></span>
                                                     <span class="split">
@@ -378,7 +378,7 @@
                                         </div>
                                         <div class="col-6 col-md-3 p-5 m-b-10">
                                             <div class="color-option-check">
-                                                <h6 class="title text-center">theme-p.css</h6><label data-load-css="public/assets/css/layouts/vertical/themes/theme-p.css">
+                                                <h6 class="title text-center">theme-p.css</h6><label data-load-css="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-p.css">
                                                     <input type="radio" name="setting-theme" />
                                                     <span class="icon-check"></span>
                                                     <span class="split">
@@ -418,25 +418,25 @@
         <!-- END CONTENT WRAPPER -->
 
         <!-- ================== PAGE LEVEL VENDOR SCRIPTS ==================-->
-        <script src="public/assets/vendor/countup.js/dist/countUp.min.js"></script>
-        <script src="public/assets/vendor/chart.js/dist/Chart.bundle.min.js"></script>
-        <script src="public/assets/vendor/flot/jquery.flot.js"></script>
-        <script src="public/assets/vendor/jquery.flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-        <script src="public/assets/vendor/flot/jquery.flot.resize.js"></script>
-        <script src="public/assets/vendor/flot/jquery.flot.time.js"></script>
-        <script src="public/assets/vendor/flot.curvedlines/curvedLines.js"></script>
-        <script src="public/assets/vendor/datatables.net/js/jquery.dataTables.js"></script>
-        <script src="public/assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/countup.js/dist/countUp.min.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/chart.js/dist/Chart.bundle.min.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/flot/jquery.flot.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/jquery.flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/flot/jquery.flot.resize.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/flot/jquery.flot.time.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/flot.curvedlines/curvedLines.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/datatables.net/js/jquery.dataTables.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
         <!-- ================== GLOBAL APP SCRIPTS ==================-->
-        <script src="public/assets/js/global/app.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/global/app.js"></script>
         <!-- ================== PAGE LEVEL SCRIPTS ==================-->
-        <script src="public/assets/js/components/countUp-init.js"></script>
-        <script src="public/assets/js/cards/counter-group.js"></script>
-        <script src="public/assets/js/cards/recent-transactions.js"></script>
-        <script src="public/assets/js/cards/monthly-budget.js"></script>
-        <script src="public/assets/js/cards/users-chart.js"></script>
-        <script src="public/assets/js/cards/bounce-rate-chart.js"></script>
-        <script src="public/assets/js/cards/session-duration-chart.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/components/countUp-init.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/cards/counter-group.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/cards/recent-transactions.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/cards/monthly-budget.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/cards/users-chart.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/cards/bounce-rate-chart.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/cards/session-duration-chart.js"></script>
 </body>
 
 </html>

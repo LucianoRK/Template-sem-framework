@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
 	<title> <?php echo CONFIG::$PROJECT_NAME; ?> | Fazer login </title>
 	<!-- ================== GOOGLE FONTS ==================-->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500" rel="stylesheet">
@@ -30,18 +31,19 @@
 </head>
 
 <body>
-	<?php if (isset($error) && !empty($error)) { ?>
-		<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			<strong>Atenção !</strong> <?php echo $error; ?>
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true" class="la la-close"></span>
-			</button>
-		</div>
-	<?php } ?>
 
 	<div class="container">
 		<form class="sign-in-form" action="<?php echo CONFIG::getBaseUrl(); ?>/entrando/sistema" method="POST">
 			<div class="card">
+				<?php if (isset($error) && !empty($error)) { ?>
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<strong>Atenção !</strong> <?php echo $error; ?>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true" class="la la-close"></span>
+						</button>
+					</div>
+				<?php } ?>
+				
 				<div class="card-body">
 					<a href="" class="brand text-center d-block m-b-20">
 						<img src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/img/qt-logo@2x.png" alt="QuantumPro Logo" />
