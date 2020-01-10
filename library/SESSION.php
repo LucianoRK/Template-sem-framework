@@ -5,10 +5,13 @@ class SESSION
 
     static function checkLoggedInUser()
     {
-        if(isset($_SESSION['id_user']) || !empty($_SESSION['id_user'])) {
+
+        if (isset($_SESSION['id_usuario']) || !empty($_SESSION['id_usuario'])) {
             return true;
         } else {
-            CONTROLLER::redirectPage("/logar");
+            if (!isset($_GET['url']) || $_GET['url'] != "logar" && $_GET['url'] != "entrando/sistema") {
+                CONTROLLER::redirectPage("/logar");
+            }
         }
     }
 }

@@ -23,5 +23,6 @@ function autoload($class)
 }
 
 CORE::run();
+SESSION::checkLoggedInUser();
 
     

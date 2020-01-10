@@ -25,6 +25,6 @@ class CONTROLLER
     static function redirectPage($page)
     {
         $base_url = CONFIG::getBaseUrl();
-        return header("Location: $base_url$page");
+        return header("Location: $base_url"."$page");
     }
 }

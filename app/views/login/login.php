@@ -50,20 +50,13 @@
 					</a>
 					<h5 class="sign-in-heading text-center m-b-20"> Entre com sua conta </h5>
 					<div class="form-group">
-						<label for="inputEmail" class="sr-only"> E-mail </label>
-						<input type="email" id="inputEmail" class="form-control" name="email" placeholder="E-mail" required="">
+						<label for="inputText" class="sr-only"> Login </label>
+						<input type="text" id="inputText" class="form-control" name="login" placeholder="Login de acesso" required="">
 					</div>
 
 					<div class="form-group">
 						<label for="inputPassword" class="sr-only"> Senha </label>
 						<input type="password" id="inputPassword" class="form-control" name="senha" placeholder="Senha" required="">
-					</div>
-					<div class="checkbox m-b-10 m-t-20">
-						<div class="custom-control custom-checkbox checkbox-primary form-check">
-							<input type="checkbox" class="custom-control-input" id="stateCheck1" checked="">
-							<label class="custom-control-label" for="stateCheck1"> Lembrar-me </label>
-						</div>
-						<a href="" class="float-right"> Esqueceu sua senha ? </a>
 					</div>
 					<button class="btn btn-primary btn-rounded btn-floating btn-lg btn-block" type="submit"> Entrar </button>
 				</div>

@@ -10,7 +10,7 @@ class User
         $this->conn = DB::get_instance();
     }
 
-    function getUser($email, $senha)
+    function getAuthenticateUser($login, $senha)
     {
         $q = "
             SELECT 
@@ -18,7 +18,7 @@ class User
             FROM 
                 tb_usuarios
             WHERE TRUE
-                AND email = '$email'
+                AND login = '$login'
                 AND senha = '$senha'
                 AND ativo = 1
         ";

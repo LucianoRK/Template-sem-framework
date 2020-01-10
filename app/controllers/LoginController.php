@@ -9,35 +9,40 @@ class loginController extends CONTROLLER
             $dados = array();
         }
 
-        $this->loadView('login/login', $dados);
+        if(!SESSION::checkLoggedInUser()){
+            $this->loadView('login/login', $dados);
+        }else{
+            CONTROLLER::redirectPage("/home");
+        }
     }
 
     function logInto()
     {
         $dados = array();
 
-        if (VALIDATION::post('email') && VALIDATION::post('senha')) {
-            $email_digitado = VALIDATION::post('email');
+        if (VALIDATION::post('login') && VALIDATION::post('senha')) {
+            $login_digitado = VALIDATION::post('login');
             $senha_digitado = VALIDATION::post('senha');
 
-            $user = new User;
-            $usuario = $user->getUser($email_digitado, $senha_digitado);
+            $user    = new User;
+            $usuario = $user->getAuthenticateUser($login_digitado, $senha_digitado);
 
             if ($usuario) {
-                $_SESSION['id_user'] = $usuario['id_usuario'];
-                $_SESSION['nome']    = $usuario['nome'];
-                $_SESSION['email']   = $usuario['email'];
+                $_SESSION['id_usuario'] = $usuario['id_usuario'];
+                $_SESSION['login']      = $usuario['login'];
+                $_SESSION['nome']       = $usuario['nome'];
+                $_SESSION['fk_empresa'] = $usuario['fk_empresa'];
 
                 CONTROLLER::redirectPage("/home");
             } else {
                 $dados = array(
-                    "error" => "O endereço de email ou a senha que você inseriu não é válido",
+                    "error" => "O login ou a senha que você inseriu não é válido",
                 );
                 $this->index($dados);
             }
         } else {
             $dados = array(
-                "error" => "O endereço de email ou a senha que você inseriu não é válido",
+                "error" => "O login ou a senha que você inseriu não é válido",
             );
             $this->index($dados);
         }
