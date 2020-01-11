@@ -14,4 +14,13 @@ class SESSION
             }
         }
     }
+
+    static function getUserId()
+    {
+        if (isset($_SESSION['id_usuario']) && !empty($_SESSION['id_usuario'])) {
+            return $_SESSION['id_usuario'];
+        } else {
+            return false;
+        }
+    }
 }

@@ -3,7 +3,7 @@
 class loginController extends CONTROLLER
 {
 
-    function index($dados = false)
+    public function index($dados = false)
     {
         if (!isset($dados) || empty($dados)) {
             $dados = array();
@@ -16,14 +16,13 @@ class loginController extends CONTROLLER
         }
     }
 
-    function logInto()
+    public function logInto()
     {
-        $dados = array();
+        $dados          = array();
+        $login_digitado = VALIDATION::post('login');
+        $senha_digitado = VALIDATION::post('senha');
 
-        if (VALIDATION::post('login') && VALIDATION::post('senha')) {
-            $login_digitado = VALIDATION::post('login');
-            $senha_digitado = VALIDATION::post('senha');
-
+        if ($login_digitado && $senha_digitado) {
             $user    = new User;
             $usuario = $user->getAuthenticateUser($login_digitado, $senha_digitado);
 
@@ -35,15 +34,11 @@ class loginController extends CONTROLLER
 
                 CONTROLLER::redirectPage("/home");
             } else {
-                $dados = array(
-                    "error" => "O login ou a senha que você inseriu não é válido",
-                );
+                $dados['error'] = "O login ou a senha que você inseriu não é válido";
                 $this->index($dados);
             }
         } else {
-            $dados = array(
-                "error" => "O login ou a senha que você inseriu não é válido",
-            );
+            $dados['error'] = "O login ou a senha que você inseriu não é válido";
             $this->index($dados);
         }
     }

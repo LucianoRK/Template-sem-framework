@@ -5,12 +5,12 @@ class Permission
 
     private $conn;
 
-    function __construct()
+    public function __construct()
     {
         $this->conn = DB::get_instance();
     }
 
-    function getAllpermission()
+    public function getAllpermission()
     {
         $q = "
             SELECT 
@@ -24,7 +24,7 @@ class Permission
         return $this->conn->fetch_all($q);
     }
 
-    function getpermissionForUser($user)
+    public function getpermissionForUser($user)
     {
         $q = "
             SELECT 
@@ -38,7 +38,7 @@ class Permission
         return $this->conn->fetch_all($q);
     }
 
-    function hasPermission($permission)
+    public function hasPermission($permission)
     {
         $user = 0; /* Preciso trazer o usuario da sessão */
 
@@ -55,7 +55,7 @@ class Permission
         return $this->conn->fetch_all($q);
     }
 
-    function insertPermission($name)
+    public function insertPermission($name)
     {
         $q = "
             INSERT INTO 
@@ -69,7 +69,7 @@ class Permission
         return $this->conn->execute($q);
     }
 
-    function insertPermissionForUser($user, $permission)
+    public function insertPermissionForUser($user, $permission)
     {
         $q = "
             INSERT INTO 

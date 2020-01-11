@@ -5,12 +5,12 @@ class Log
 
     private $conn;
 
-    function __construct()
+    public function __construct()
     {
         $this->conn = DB::get_instance();
     }
 
-    function getLogForUser($user)
+    public function getLogForUser($user)
     {
         $q = "
             SELECT 
@@ -24,7 +24,7 @@ class Log
         return $this->conn->fetch_all($q);
     }
 
-    function writeLog($string)
+    public function writeLog($string)
     {
         $fp = fopen('log.txt', 'a');
         fwrite($fp, "\n\n");

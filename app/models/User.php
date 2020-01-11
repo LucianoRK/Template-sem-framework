@@ -5,12 +5,12 @@ class User
 
     private $conn;
 
-    function __construct()
+    public function __construct()
     {
         $this->conn = DB::get_instance();
     }
 
-    function getAuthenticateUser($login, $senha)
+    public function getAuthenticateUser($login, $senha)
     {
         $q = "
             SELECT 
@@ -26,7 +26,7 @@ class User
         return $this->conn->fetch($q);
     }
 
-    function getAllUserCompany($company)
+    public function getAllUserCompany($company)
     {
         $q = "
             SELECT 
@@ -38,5 +38,33 @@ class User
         ";
 
         return $this->conn->fetch_all($q);
+    }
+
+    public function getLoggedUserData($id_usuario)
+    {
+        $q = "
+            SELECT 
+                *
+            FROM 
+                tb_usuarios
+            WHERE TRUE
+                AND id_usuario = '{$id_usuario}'
+        ";
+
+        return $this->conn->fetch($q);
+    }
+
+    public function changeMyPassword($id_usuario, $nova_senha)
+    {
+        $q = "
+            UPDATE 
+                tb_usuarios 
+            SET
+                senha = '{$nova_senha}'
+            WHERE 
+                id_usuario = '{$id_usuario}'
+        ";
+
+        return $this->conn->execute($q);
     }
 }

@@ -9,11 +9,16 @@ if (SESSION::checkLoggedInUser()) {
         $routes['/sair'] = '/home/exit_system';
     }
 
-    /* USUARIO */ {
+    /* MY ACCOUNT */ {
+        $routes['/minha/conta']         = '/myaccount/index';
+        $routes['/alterar/minha/senha'] = '/myaccount/changeMyPassword';
+    }
+
+    /* USER */ {
         $routes['/usuarios'] = '/user/index';
     }
 
-    /* PERMISSOES */ {
+    /* PERMISSION */ {
         $routes['/permissoes'] = '/permission/index';
     }
 }
