@@ -7,7 +7,7 @@ class User
 
     public function __construct()
     {
-        $this->conn = DB::get_instance();
+        $this->conn = DB::getInstance();
     }
 
     public function getAuthenticateUser($login, $senha)
@@ -37,7 +37,7 @@ class User
                 AND fk_empresa = '{$company}'
         ";
 
-        return $this->conn->fetch_all($q);
+        return $this->conn->fetchAll($q);
     }
 
     public function getLoggedUserData($id_usuario)

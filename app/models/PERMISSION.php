@@ -7,7 +7,7 @@ class Permission
 
     public function __construct()
     {
-        $this->conn = DB::get_instance();
+        $this->conn = DB::getInstance();
     }
 
     public function getAllpermission()
@@ -21,7 +21,7 @@ class Permission
                 AND ativo = 1
         ";
 
-        return $this->conn->fetch_all($q);
+        return $this->conn->fetchAll($q);
     }
 
     public function getpermissionForUser($user)
@@ -35,7 +35,7 @@ class Permission
                 AND fk_usuario = '{$user}'
         ";
 
-        return $this->conn->fetch_all($q);
+        return $this->conn->fetchAll($q);
     }
 
     public function hasPermission($permission)
@@ -52,7 +52,7 @@ class Permission
                 AND fk_permissao = '{$permission}'
         ";
 
-        return $this->conn->fetch_all($q);
+        return $this->conn->fetchAll($q);
     }
 
     public function insertPermission($name)

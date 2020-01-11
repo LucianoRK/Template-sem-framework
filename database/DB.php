@@ -18,7 +18,7 @@ class DB {
         }
     }
 
-    static function get_instance($force_new_instance = false) {
+    static function getInstance($force_new_instance = false) {
         if ($force_new_instance) {
             return new DB();
         } else {
@@ -50,7 +50,7 @@ class DB {
         }
     }
 
-    function fetch_all($query) {
+    function fetchAll($query) {
         try {
             $sth = $this->link->query($query);
             return $sth->fetchAll(PDO::FETCH_ASSOC);
@@ -60,7 +60,7 @@ class DB {
         }
     }
 
-    function fetch_attr($query, $attribute) {
+    function fetchAttr($query, $attribute) {
         try {
             $sth = $this->link->query($query);
             $result = $sth->fetch(PDO::FETCH_ASSOC);
@@ -75,12 +75,12 @@ class DB {
         }
     }
 
-    function row_count($query) {
+    function rowCount($query) {
         $sth = $this->link->query($query);
         return $sth->rowCount();
     }
 
-    function last_id() {
+    function lastId() {
         $sth = $this->link->query("SELECT LAST_INSERT_ID()");
         return $sth->fetchColumn();
     }

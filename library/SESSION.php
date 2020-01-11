@@ -3,6 +3,25 @@
 class SESSION
 {
 
+    static function setSession($session, $valor)
+    {
+        if($session){
+            $_SESSION[$session] = $valor;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    static function getSession($session)
+    {
+        if(isset($_SESSION[$session])){
+            return $_SESSION[$session];
+        }else{
+            return false;
+        }
+    }
+    
     static function checkLoggedInUser()
     {
 

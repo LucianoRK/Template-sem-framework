@@ -7,7 +7,7 @@ class Log
 
     public function __construct()
     {
-        $this->conn = DB::get_instance();
+        $this->conn = DB::getInstance();
     }
 
     public function getLogForUser($user)
@@ -21,7 +21,7 @@ class Log
                 AND fk_usuario = '{$user}'
         ";
 
-        return $this->conn->fetch_all($q);
+        return $this->conn->fetchAll($q);
     }
 
     public function writeLog($string)
