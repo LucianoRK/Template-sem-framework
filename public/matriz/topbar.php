@@ -436,6 +436,8 @@
         <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
         <!-- ================== GLOBAL APP SCRIPTS ==================-->
         <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/global/app.js"></script>
+        <!-- ================== MANUAL SCRIPTS ==================-->
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/script.js"></script>
         <!-- ================== PAGE LEVEL SCRIPTS ==================-->
         <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/components/countUp-init.js"></script>
         <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/cards/counter-group.js"></script>

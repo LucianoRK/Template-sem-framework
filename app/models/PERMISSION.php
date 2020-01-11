@@ -24,7 +24,7 @@ class Permission
         return $this->conn->fetchAll($q);
     }
 
-    public function getpermissionForUser($user)
+    public function getpermissionByUser($user)
     {
         $q = "
             SELECT 
@@ -69,7 +69,7 @@ class Permission
         return $this->conn->execute($q);
     }
 
-    public function insertPermissionForUser($user, $permission)
+    public function insertPermissionUser($user, $permission)
     {
         $q = "
             INSERT INTO 

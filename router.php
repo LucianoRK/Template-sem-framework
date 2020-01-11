@@ -15,7 +15,9 @@ if (SESSION::checkLoggedInUser()) {
     }
 
     /* USER */ {
-        $routes['/usuarios'] = '/user/index';
+        $routes['/usuarios']                     = '/user/index';
+        $routes['/usuarios/getListActiveUsers']  = '/user/getListActiveUsers';
+        $routes['/usuarios/getListDisableUsers'] = '/user/getListDisableUsers';
     }
 
     /* PERMISSION */ {

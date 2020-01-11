@@ -26,7 +26,7 @@ class User
         return $this->conn->fetch($q);
     }
 
-    public function getAllUserCompany($company)
+    public function getAllUserCompany($company, $active)
     {
         $q = "
             SELECT 
@@ -35,6 +35,7 @@ class User
                 tb_usuarios
             WHERE TRUE
                 AND fk_empresa = '{$company}'
+                AND ativo = '{$active}'
         ";
 
         return $this->conn->fetchAll($q);

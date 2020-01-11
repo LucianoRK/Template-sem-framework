@@ -10,7 +10,7 @@ class Log
         $this->conn = DB::getInstance();
     }
 
-    public function getLogForUser($user)
+    public function getLogByUser($user)
     {
         $q = "
             SELECT 
