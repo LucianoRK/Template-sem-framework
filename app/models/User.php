@@ -30,12 +30,16 @@ class User
     {
         $q = "
             SELECT 
-                *
+                tb_usuarios.id_usuario,
+                tb_usuarios.nome,
+                tb_tipos_usuario.nome as tipo_nome,
+                tb_usuarios.quantidade_acesso
             FROM 
                 tb_usuarios
+                INNER JOIN tb_tipos_usuario on tb_tipos_usuario.id_tipo_usuario = tb_usuarios.fk_tipo_usuario
             WHERE TRUE
-                AND fk_empresa = '{$company}'
-                AND ativo = '{$active}'
+                AND tb_usuarios.fk_empresa = '{$company}'
+                AND tb_usuarios.ativo = '{$active}'
         ";
 
         return $this->conn->fetchAll($q);

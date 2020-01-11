@@ -16,13 +16,25 @@ class userController extends CONTROLLER
     {
         $user = new User;
         $dados['user_ativos'] = $user->getAllUserCompany(VALIDATION::post('company'), 1);
+        if($dados['user_ativos']){
+            $dados['count'] = 0;
+        }else{
+            $dados['user_ativos'] = false;
+            $dados['error'] = MSG::nenhumaInformacao();
+        }
         $this->loadView('user/activeUserLoad', $dados);
     }
 
     public function getListDisableUsers()
     {
         $user = new User;
-        $dados['user_ativos'] = $user->getAllUserCompany(VALIDATION::post('company'), 0);
+        $dados['user_desativados'] = $user->getAllUserCompany(VALIDATION::post('company'), 0);
+        if($dados['user_desativados']){
+            $dados['count'] = 0;
+        }else{
+            $dados['user_desativados'] = false;
+            $dados['error'] = MSG::nenhumaInformacao();
+        }
         $this->loadView('user/disabledUserLoad', $dados);
     }
 }
