@@ -1,7 +1,16 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <h5 class="card-header">Buscar Usuários</h5>
+                <h5 class="card-header">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <span class="align-middle">Usuários</span>
+                        </div>
+                        <div class="form-group col-md-6 text-right">
+                            <button id="novo_usuario_btn" class="btn btn-sm btn-primary">Novo Usuário</button>
+                        </div>
+                    </div>
+                </h5>
                 <div class="card-body">
                     <div class="form-body">
                         <div class="form-group row">
@@ -37,11 +46,23 @@
             });
         }
 
+        function newUser() {
+            $("#usuarios_desativados").html('');
+            $("#usuarios_ativos").load(urlAtual() + "/newUser", function() {
+                ativarBotao('novo_usuario');
+            });
+        }
+
         $(document).ready(function() {
             $('#buscar_dados').on('click', function() {
                 let select_form_company = $("#select_form_company").val();
                 desativaBotao('buscar_dados');
                 loadListUser(select_form_company);
+            });
+
+            $('#novo_usuario_btn').on('click', function() {
+                desativaBotao('novo_usuario');
+                newUser();
             });
 
             $('.data_table').DataTable();

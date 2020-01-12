@@ -17,6 +17,7 @@ class CONFIG {
     static $LOGIN_FAILED_ATTEMPTS_RANGE	= 15; // em minutos 
     static $LOGIN_RECAPTCHA 			= FALSE;
     static $LOGIN_CAPTCHA_SECRET 		= '6Lf0Lq8UAAAAADIQg3e_6G-X1FQfJc__n-5DP-Pf';
+    static $PASSWORD_DEFAULT 		    = 'Y_A-NNKLf568_adR#$11R';
     /*
      * Mail
      */

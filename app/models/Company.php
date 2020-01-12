@@ -39,6 +39,20 @@ class Company
         return $this->conn->fetchAll($q);
     }
 
+    function getNameCompany($id)
+    {
+        $q = "
+            SELECT 
+                nome
+            FROM 
+                tb_empresas
+            WHERE TRUE
+                AND id_empresa = '{$id}'
+        ";
+
+        return $this->conn->fetchAttr($q, 'nome');
+    }
+
     function getAllCompanyByUser($user){
         $q = "
             SELECT 

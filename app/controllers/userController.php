@@ -2,7 +2,7 @@
 
 class userController extends CONTROLLER
 {
-    public function index()
+    function index()
     {
         $company = new Company;
         $dados['company'] = $company->getAllCompanyByUser(SESSION::getSession('id_usuario'));
@@ -12,29 +12,46 @@ class userController extends CONTROLLER
         $this->loadTemplate('user/user', $dados);
     }
 
-    public function getListActiveUsers()
+    function getListActiveUsers()
     {
-        $user = new User;
+        $user    = new User;
         $dados['user_ativos'] = $user->getAllUserCompany(VALIDATION::post('company'), 1);
-        if($dados['user_ativos']){
+
+        if ($dados['user_ativos']) {
+            $company = new Company;
+            $dados['nome_empresa'] = $company->getNameCompany(VALIDATION::post('company'));
             $dados['count'] = 0;
-        }else{
+        } else {
             $dados['user_ativos'] = false;
             $dados['error'] = MSG::nenhumaInformacao();
         }
         $this->loadView('user/activeUserLoad', $dados);
     }
 
-    public function getListDisableUsers()
+    function getListDisableUsers()
     {
         $user = new User;
         $dados['user_desativados'] = $user->getAllUserCompany(VALIDATION::post('company'), 0);
-        if($dados['user_desativados']){
+        if ($dados['user_desativados']) {
+            $company = new Company;
+            $dados['nome_empresa'] = $company->getNameCompany(VALIDATION::post('company'));
             $dados['count'] = 0;
-        }else{
+        } else {
             $dados['user_desativados'] = false;
             $dados['error'] = MSG::nenhumaInformacao();
         }
         $this->loadView('user/disabledUserLoad', $dados);
+    }
+
+    function newUser()
+    {
+        $dados = array();
+        $this->loadView('user/newUser', $dados);
+    }
+
+    function editUser()
+    {
+        $dados = array();
+        $this->loadView('user/editUser', $dados);
     }
 }

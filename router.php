@@ -18,6 +18,8 @@ if (SESSION::checkLoggedInUser()) {
         $routes['/usuarios']                     = '/user/index';
         $routes['/usuarios/getListActiveUsers']  = '/user/getListActiveUsers';
         $routes['/usuarios/getListDisableUsers'] = '/user/getListDisableUsers';
+        $routes['/usuarios/newUser']             = '/user/newUser';
+        $routes['/usuarios/editUser']            = '/user/editUser';
     }
 
     /* PERMISSION */ {

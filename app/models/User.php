@@ -33,13 +33,16 @@ class User
                 tb_usuarios.id_usuario,
                 tb_usuarios.nome,
                 tb_tipos_usuario.nome as tipo_nome,
-                tb_usuarios.quantidade_acesso
+                tb_usuarios.quantidade_acesso,
+                tb_usuarios.fk_empresa
             FROM 
                 tb_usuarios
                 INNER JOIN tb_tipos_usuario on tb_tipos_usuario.id_tipo_usuario = tb_usuarios.fk_tipo_usuario
             WHERE TRUE
                 AND tb_usuarios.fk_empresa = '{$company}'
                 AND tb_usuarios.ativo = '{$active}'
+            ORDER BY
+                tb_usuarios.nome
         ";
 
         return $this->conn->fetchAll($q);

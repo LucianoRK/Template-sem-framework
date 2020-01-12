@@ -2,7 +2,7 @@
 
 class SAFETY
 {
-
+    /** Gera a criptografia */
     static function password_hash($senha)
     {
         if ($senha) {
@@ -12,6 +12,7 @@ class SAFETY
         }
     }
 
+    /** Verifica  a criptografia */
     static function password_verify($senha, $hash)
     {
         if ($senha) {

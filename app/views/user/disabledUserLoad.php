@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <h5 class="card-header text-danger">Usuários desativados</h5>
+                <h5 class="card-header text-danger">Usuários desativados - <?php echo $dados['nome_empresa'] ?></h5>
                 <div class="card-body">
-                    <table id="bs4-table" class="table table-striped table-bordered" style="width:100%">
+                    <table id="bs4-table" class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
