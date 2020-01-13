@@ -18,7 +18,7 @@ class Company
             FROM 
                 tb_empresas
             WHERE TRUE
-                AND ativo = 1'
+                AND ativo = 1
         ";
 
         return $this->conn->fetchAll($q);
@@ -32,8 +32,8 @@ class Company
             FROM 
                 tb_empresas
             WHERE TRUE
-                AND ativo = 1'
-                AND id = '{$id}'
+                AND ativo = 1
+                AND id_empresa = '{$id}'
         ";
 
         return $this->conn->fetchAll($q);

@@ -40,7 +40,7 @@ class User
                 INNER JOIN tb_tipos_usuario on tb_tipos_usuario.id_tipo_usuario = tb_usuarios.fk_tipo_usuario
             WHERE TRUE
                 AND tb_usuarios.fk_empresa = '{$company}'
-                AND tb_usuarios.ativo = '{$active}'
+                AND tb_usuarios.ativo      = '{$active}'
             ORDER BY
                 tb_usuarios.nome
         ";
