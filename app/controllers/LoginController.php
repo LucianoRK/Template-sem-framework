@@ -9,10 +9,28 @@ class loginController extends CONTROLLER
             $dados = array();
         }
 
-        if(!SESSION::checkLoggedInUser()){
+        if (!SESSION::checkLoggedInUser()) {
             $this->loadView('login/login', $dados);
-        }else{
+        } else {
             CONTROLLER::redirectPage("/home");
+        }
+    }
+
+    public static function validateReCaptcha($recaptcha)
+    {
+        if (isset($recaptcha) && !empty($recaptcha)) {
+            $chave_secreta      = "6LeEas8UAAAAAEoif3pDSc9eVnkBMcjBLYVsSw_o";
+            $ip_logado          = $_SERVER['REMOTE_ADDR'];
+            $retorno_google     = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$chave_secreta&response=$recaptcha&remoteip=$ip_logado"); 
+            $retorno_convertido = json_decode($retorno_google, true);
+
+            if ($retorno_convertido['success']) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
     }
 
@@ -21,24 +39,32 @@ class loginController extends CONTROLLER
         $dados          = array();
         $login_digitado = VALIDATION::post('login');
         $senha_digitado = VALIDATION::post('senha');
+        $recaptcha      = VALIDATION::post('g-recaptcha-response');
 
-        if ($login_digitado && $senha_digitado) {
-            $user    = new User;
-            $usuario = $user->getAuthenticateUser($login_digitado, $senha_digitado);
+        $retorno_recaptcha = self::validateReCaptcha($recaptcha);
 
-            if ($usuario) {
-                $_SESSION['id_usuario'] = $usuario['id_usuario'];
-                $_SESSION['login']      = $usuario['login'];
-                $_SESSION['nome']       = $usuario['nome'];
-                $_SESSION['fk_empresa'] = $usuario['fk_empresa'];
+        if ($retorno_recaptcha) {
+            if ($login_digitado && $senha_digitado) {
+                $user    = new User;
+                $usuario = $user->getAuthenticateUser($login_digitado, $senha_digitado);
 
-                CONTROLLER::redirectPage("/home");
+                if ($usuario) {
+                    $_SESSION['id_usuario'] = $usuario['id_usuario'];
+                    $_SESSION['login']      = $usuario['login'];
+                    $_SESSION['nome']       = $usuario['nome'];
+                    $_SESSION['fk_empresa'] = $usuario['fk_empresa'];
+
+                    CONTROLLER::redirectPage("/home");
+                } else {
+                    $dados['error'] = "O login ou a senha que você inseriu não é válido";
+                    $this->index($dados);
+                }
             } else {
                 $dados['error'] = "O login ou a senha que você inseriu não é válido";
                 $this->index($dados);
             }
         } else {
-            $dados['error'] = "O login ou a senha que você inseriu não é válido";
+            $dados['error'] = "reCAPTCHA inválido!";
             $this->index($dados);
         }
     }

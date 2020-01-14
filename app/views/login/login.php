@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<title> <?php echo CONFIG::$PROJECT_NAME; ?> | Fazer login </title>
+	<title> <?php echo CONFIG::$PROJECT_NAME; ?> | Logar-se </title>
 	<!-- ================== GOOGLE FONTS ==================-->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500" rel="stylesheet">
 	<!-- ======================= GLOBAL VENDOR STYLES ========================-->
@@ -28,10 +28,17 @@
 	<link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/menu-type/default.css">
 	<!-- ======================= THEME COLOR STYLES ===========================-->
 	<link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/layouts/vertical/themes/theme-a.css">
+	<!-- ======================= reCAPTCHA  ===========================-->
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
-<body>
+<style>
+	#reCaptcha{
+		padding-left: 22px;
+	}
+</style>
 
+<body>
 	<div class="container">
 		<form class="sign-in-form" action="<?php echo CONFIG::getBaseUrl(); ?>/entrando/sistema" method="POST">
 			<div class="card">
@@ -43,7 +50,7 @@
 						</button>
 					</div>
 				<?php } ?>
-				
+
 				<div class="card-body">
 					<a href="" class="brand text-center d-block m-b-20">
 						<img src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/img/qt-logo@2x.png" alt="QuantumPro Logo" />
@@ -58,6 +65,11 @@
 						<label for="inputPassword" class="sr-only"> Senha </label>
 						<input type="password" id="inputPassword" class="form-control" name="senha" placeholder="Senha" required="">
 					</div>
+
+					<div class="form-group" id="reCaptcha">
+						<div  class="g-recaptcha" data-sitekey="6LeEas8UAAAAAMZROtSWdO2Bt5j1ubqQ7oaBP1X_"></div>
+					</div>
+
 					<button class="btn btn-primary btn-rounded btn-floating btn-lg btn-block" type="submit"> Entrar </button>
 				</div>
 			</div>
