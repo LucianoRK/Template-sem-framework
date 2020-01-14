@@ -20,4 +20,13 @@ class VALIDATION
             return false;
         }
     }
+
+    static function EmptyAndNumeric($dado)
+    {
+        if (is_numeric($dado) && !empty($dado)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

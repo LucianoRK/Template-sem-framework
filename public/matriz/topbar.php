@@ -434,12 +434,14 @@
         <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/flot.curvedlines/curvedLines.js"></script>
         <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/datatables.net/js/jquery.dataTables.js"></script>
         <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/jquery-mask/jquery.mask.min.js"></script>
         <!-- ================== GLOBAL APP SCRIPTS ==================-->
         <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/global/app.js"></script>
         <!-- ================== MANUAL SCRIPTS ==================-->
         <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/script.js"></script>
         <!-- ================== PAGE LEVEL SCRIPTS ==================-->
         <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/components/countUp-init.js"></script>
+        <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/components/jquery-mask-init.js"></script>
         <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/cards/counter-group.js"></script>
         <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/cards/recent-transactions.js"></script>
         <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/cards/monthly-budget.js"></script>

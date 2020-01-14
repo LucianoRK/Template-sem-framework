@@ -27,19 +27,19 @@
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">*Nome Completo</label>
                             <div class="col-md-5">
-                                <input id="nome" type="text" placeholder="Nome completo do usuário" class="form-control" autocomplete="given-name">
+                                <input id="nome" type="text" placeholder="Nome completo do usuário" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">*CPF</label>
                             <div class="col-md-5">
-                                <input id="cpf" type="text" placeholder="CPF do usuário" class="form-control" autocomplete="family-name">
+                                <input id="cpf" type="text" placeholder="CPF do usuário" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">Email</label>
                             <div class="col-md-5">
-                                <input id="email" type="text" placeholder="Email do Usuário" class="form-control" autocomplete="email">
+                                <input id="email" type="text" placeholder="Email do Usuário" class="form-control" >
                             </div>
                         </div>
                         <div class="form-group row">
@@ -125,10 +125,13 @@
                 senha: $("#senha").val(),
                 senha_rep: $("#senha_rep").val()
             }, function(data) {
-                if (data == 'ok') {
-                    alert(data);
+                let erros = JSON.parse(data);
+                if (erros == 0 || erros == null) {
+                    alert('gravou');
                 } else {
-                    $("#senha_rep").parents(".form-group").addClass("has-error");
+                    $.each(erros, function(indice, value) {
+                        $("#"+value).parents(".form-group").addClass("has-error");
+                    });
                 }
             });
         });
