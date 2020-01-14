@@ -51,8 +51,9 @@ class myaccountController extends controller
                 $id_usuario = SESSION::getUserId();
 
                 if ($id_usuario) {
-                    $user = new User;
-                    $user->changeMyPassword($id_usuario, $nova_senha);
+                    $nova_senha_has = SAFETY::password_hash($nova_senha);
+                    $user           = new User;
+                    $user->changeMyPassword($id_usuario, $nova_senha_has);
 
                     $dados['success']  = "A senha foi alterado";
                     $this->index($dados);

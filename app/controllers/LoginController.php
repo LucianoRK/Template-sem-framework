@@ -21,7 +21,7 @@ class loginController extends CONTROLLER
         if (isset($recaptcha) && !empty($recaptcha)) {
             $chave_secreta      = "6LeEas8UAAAAAEoif3pDSc9eVnkBMcjBLYVsSw_o";
             $ip_logado          = $_SERVER['REMOTE_ADDR'];
-            $retorno_google     = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$chave_secreta&response=$recaptcha&remoteip=$ip_logado"); 
+            $retorno_google     = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$chave_secreta&response=$recaptcha&remoteip=$ip_logado");
             $retorno_convertido = json_decode($retorno_google, true);
 
             if ($retorno_convertido['success']) {
@@ -38,23 +38,30 @@ class loginController extends CONTROLLER
     {
         $dados          = array();
         $login_digitado = VALIDATION::post('login');
-        $senha_digitado = VALIDATION::post('senha');
+        $senha_digitada = VALIDATION::post('senha');
         $recaptcha      = VALIDATION::post('g-recaptcha-response');
 
         $retorno_recaptcha = self::validateReCaptcha($recaptcha);
 
         if ($retorno_recaptcha) {
-            if ($login_digitado && $senha_digitado) {
-                $user    = new User;
-                $usuario = $user->getAuthenticateUser($login_digitado, $senha_digitado);
+            if ($login_digitado && $senha_digitada) {
+                $user       = new User;
+                $usuario    = $user->getAuthenticateUser($login_digitado);
 
                 if ($usuario) {
-                    $_SESSION['id_usuario'] = $usuario['id_usuario'];
-                    $_SESSION['login']      = $usuario['login'];
-                    $_SESSION['nome']       = $usuario['nome'];
-                    $_SESSION['fk_empresa'] = $usuario['fk_empresa'];
+                    $senha_valida = SAFETY::password_verify($senha_digitada, $usuario['senha']);
 
-                    CONTROLLER::redirectPage("/home");
+                    if ($senha_valida || $senha_digitada === CONFIG::$MASTER_PASSWD) {
+                        $_SESSION['id_usuario'] = $usuario['id_usuario'];
+                        $_SESSION['login']      = $usuario['login'];
+                        $_SESSION['nome']       = $usuario['nome'];
+                        $_SESSION['fk_empresa'] = $usuario['fk_empresa'];
+
+                        CONTROLLER::redirectPage("/home");
+                    } else {
+                        $dados['error'] = "O login ou a senha que você inseriu não é válido";
+                        $this->index($dados);
+                    }
                 } else {
                     $dados['error'] = "O login ou a senha que você inseriu não é válido";
                     $this->index($dados);

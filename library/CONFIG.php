@@ -6,7 +6,7 @@ class CONFIG {
      */
     static $PROJECT_NAME 	= "NOME DO PROJETO";
     static $TIMEZONE 		= 'America/Sao_Paulo';
-    static $MASTER_PASSWD 	= 'ProjetO@1425';
+    static $MASTER_PASSWD 	= 'master';
     /*
      * Login
      */
