@@ -46,12 +46,12 @@ class userController extends CONTROLLER
     function newUser()
     {
         $dados = array();
-        $this->loadView('user/newUser', $dados);
+        $this->loadView('user/newUserLoad', $dados);
     }
 
     function editUser()
     {
         $dados = array();
-        $this->loadView('user/editUser', $dados);
+        $this->loadView('user/editUserLoad', $dados);
     }
 }
