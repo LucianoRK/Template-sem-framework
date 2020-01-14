@@ -94,7 +94,7 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="offset-sm-3 col-md-5">
-                                    <button class="btn btn-primary btn-rounded">Gravar</button>
+                                    <button id="novo_usuario_gravar" class="btn btn-primary btn-rounded">Gravar</button>
                                     <button id="novo_usuario_fechar" class="btn btn-secondary clear-form btn-rounded btn-outline ">Cancelar</button>
                                 </div>
                             </div>

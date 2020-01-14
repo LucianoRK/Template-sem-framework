@@ -26,14 +26,14 @@ CORE::run();
 SESSION::checkLoggedInUser();
 
 
-/* Exemplo de criptografia */
+/* Exemplo de criptografia 
 $senha = '123';
 
-/* crio a hash */
+ crio a hash 
 $hash = SAFETY::password_hash($senha);
 echo $hash.'<br>';
 
-/* Verifico se a senha bate com a hash */
+Verifico se a senha bate com a hash
 echo SAFETY::password_verify($senha, $hash);
-
+*/
     
