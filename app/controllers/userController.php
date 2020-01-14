@@ -49,6 +49,32 @@ class userController extends CONTROLLER
         $this->loadView('user/newUserLoad', $dados);
     }
 
+    function saveUser()
+    {
+        /*Dados gerais */
+        $empresa = VALIDATION::post('empresa');
+        $tipo_usuario = VALIDATION::post('tipo_usuario');
+
+        /*Dados Pessoais */
+        $nome = VALIDATION::post('nome');
+        $cpf = VALIDATION::post('cpf');
+        $email = VALIDATION::post('email');
+        $data_nascimento = VALIDATION::post('data_nascimento');
+
+        /*Dados residenciais */
+        $cidade = VALIDATION::post('cidade');
+        $estado = VALIDATION::post('estado');
+        $rua = VALIDATION::post('rua');
+        $numero_casa = VALIDATION::post('numero_casa');
+
+        /*Dados usuario */
+        $login = VALIDATION::post('login');
+        $senha = VALIDATION::post('senha');
+        $senha_rep = VALIDATION::post('senha_rep');
+
+       echo $login;
+    }
+
     function editUser()
     {
         $dados = array();
