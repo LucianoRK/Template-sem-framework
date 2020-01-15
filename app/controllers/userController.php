@@ -86,7 +86,7 @@ class userController extends CONTROLLER
         if(!is_numeric($cpf) || strlen ($cpf) != 11){
             array_push($erros, 'cpf');
         }
-        if(!empty($email)){ // complementar
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){ 
             array_push($erros, 'email');
         }
         if(!empty($data_nascimento)){ // complementar
@@ -101,6 +101,11 @@ class userController extends CONTROLLER
         }
         if(strlen ($senha_rep) < 5){//complementar
             array_push($erros, 'senha_rep');
+        }
+
+        if($senha != $senha_rep){
+            array_push($erros, 'senha');
+            array_push($erros, 'senha');
         }
         
         echo json_encode($erros);
