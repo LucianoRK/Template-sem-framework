@@ -25,7 +25,7 @@ class SESSION
     static function checkLoggedInUser()
     {
 
-        if (isset($_SESSION['id_usuario']) || !empty($_SESSION['id_usuario'])) {
+        if (isset($_SESSION['id_usuario']) && !empty($_SESSION['id_usuario']) && isset($_SESSION['fk_empresa']) && !empty($_SESSION['fk_empresa'])) {
             return true;
         } else {
             if (!isset($_GET['url']) || $_GET['url'] != "logar" && $_GET['url'] != "entrando/sistema") {
