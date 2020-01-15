@@ -34,6 +34,11 @@
     <!-- ======================= SELECT 02 ===========================-->
     <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/select2/select2.min.css">
 
+    <!-- ================== PAGE LEVEL VENDOR SCRIPTS ==================-->
+    <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    <!-- ================== PAGE LEVEL COMPONENT SCRIPTS ==================-->
+    <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/components/sweetalert2.js"></script>
+
     <!-- ================== GLOBAL VENDOR SCRIPTS ==================-->
     <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/modernizr/modernizr.custom.js"></script>
     <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/jquery/dist/jquery.min.js"></script>
