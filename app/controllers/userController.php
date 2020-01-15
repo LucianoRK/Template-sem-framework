@@ -45,7 +45,16 @@ class userController extends CONTROLLER
 
     function newUser()
     {
-        $dados = array();
+        $company = new Company;
+        $User    = new User;
+
+        $dados['company'] = $company->getAllCompanyByUser(SESSION::getSession('id_usuario'));
+        if (!$dados['company']) {
+            $dados['company'] = $company->getInfoCompany(SESSION::getSession('fk_empresa'));
+        }
+        $dados['types_user'] = $User->getAllTypeUser();
+
+
         $this->loadView('user/newUserLoad', $dados);
     }
 
@@ -74,42 +83,54 @@ class userController extends CONTROLLER
         $senha     = VALIDATION::post('senha');
         $senha_rep = VALIDATION::post('senha_rep');
 
-        if(!is_numeric($empresa)){
+        if (!is_numeric($empresa)) {
             array_push($erros, 'empresa');
         }
-        if(!is_numeric($tipo_usuario)){
+        if (!is_numeric($tipo_usuario)) {
             array_push($erros, 'tipo_usuario');
         }
-        if(!empty($nome) || strlen ($nome) < 2){
+        if (empty($nome) || strlen($nome) < 2) {
             array_push($erros, 'nome');
         }
-        if(!is_numeric($cpf) || strlen ($cpf) != 11){
+        if (!is_numeric($cpf) || strlen($cpf) != 11) {
             array_push($erros, 'cpf');
         }
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){ 
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             array_push($erros, 'email');
         }
-        if(!empty($data_nascimento)){ // complementar
+        if (empty($data_nascimento)) {
             array_push($erros, 'data_nascimento');
         }
-
-        if(strlen ($login) < 5){//complementar
+        if (strlen($login) < 5) {
             array_push($erros, 'login');
         }
-        if(strlen ($senha) < 5){//complementar
+        if (strlen($senha) < 7) {
             array_push($erros, 'senha');
         }
-        if(strlen ($senha_rep) < 5){//complementar
+        if (strlen($senha_rep) < 7) {
             array_push($erros, 'senha_rep');
         }
 
-        if($senha != $senha_rep){
+        if ($senha != $senha_rep) {
             array_push($erros, 'senha');
             array_push($erros, 'senha');
         }
         
+        if ($erros == 0 || $erros == null) {
+            $user = new User;
+            $user->recordNewUser(
+                $empresa,
+                $tipo_usuario,
+                $nome,
+                $data_nascimento,
+                $email,
+                $login,
+                SAFETY::password_hash($senha),
+                3
+            );
+        }
+        
         echo json_encode($erros);
-
     }
 
     function editUser()

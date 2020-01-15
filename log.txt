@@ -50,3 +50,9 @@
             WHERE TRUE
                 AND tb_usuarios.fk_empresa = '1'
                 AND tb_usuarios.ativo = '0'
+
+
+2020/01/16 12:23:18 -> INSERT INTO 
+                tb_usuarios
+                    (fk_empresa, fk_tipo_usuario, nome, data_nascimento, email, login, senha, quantidade_acesso)
+            VALUES (1, 2, dasdasdas, 2020-01-15, aaaaaaaaaa@aaaa.com, dasdasdas, $2y$10$FqtJeZwmNSOOF5AZFJVI7e4kNVHpqkfUDW1Vq3SLIsHwW1u7TbNBK, 3)

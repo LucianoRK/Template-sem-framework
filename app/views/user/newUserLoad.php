@@ -9,8 +9,9 @@
                             <label class="control-label text-right col-md-3">*Empresa</label>
                             <div class="col-md-5">
                                 <select id="empresa" class="form-control ">
-                                    <option value="">aa</option>
-                                    <option value="">aabb</option>
+                                    <?php foreach ($dados['company'] as $empresa) { ?>
+                                        <option value="<?php echo $empresa['id_empresa']; ?>"><?php echo $empresa['nome']; ?></option>                                    
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -18,8 +19,9 @@
                             <label class="control-label text-right col-md-3">*Tipo de Usuario</label>
                             <div class="col-md-5">
                                 <select id="tipo_usuario" class="form-control">
-                                    <option value="">aaa</option>
-                                    <option value="">bbbb</option>
+                                    <?php foreach ($dados['types_user'] as $tipo_usuario) { ?>
+                                        <option value="<?php echo $tipo_usuario['id_tipo_usuario']; ?>"><?php echo $tipo_usuario['nome']; ?></option>        
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -39,7 +41,7 @@
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">Email</label>
                             <div class="col-md-5">
-                                <input id="email" type="text" placeholder="Email do Usuário" class="form-control" >
+                                <input id="email" type="text" placeholder="Email do Usuário" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -76,13 +78,13 @@
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">*Senha</label>
                             <div class="col-md-5">
-                                <input id="senha" type="text" class="form-control" placeholder="A senha deve conter no mínimo 6 caracteres com letras e números">
+                                <input id="senha" type="text" class="form-control" placeholder="A senha deve conter no mínimo 8 caracteres com letras e números">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">*Repita a senha</label>
                             <div class="col-md-5">
-                                <input id="senha_rep" type="text" class="form-control" placeholder="A senha deve conter no mínimo 6 caracteres com letras e números">
+                                <input id="senha_rep" type="text" class="form-control" placeholder="A senha deve conter no mínimo 8 caracteres com letras e números">
                             </div>
                         </div>
                     </div>
@@ -110,6 +112,8 @@
 <script>
     $(document).ready(function() {
         $('#novo_usuario_gravar').on('click', function() {
+            desativaBotao('novo_usuario_gravar');
+            $(".form-group").removeClass("has-error");
             $.post(urlAtual() + "/saveUserData", {
                 empresa: $("#empresa").val(),
                 tipo_usuario: $("#tipo_usuario").val(),
@@ -125,12 +129,17 @@
                 senha: $("#senha").val(),
                 senha_rep: $("#senha_rep").val()
             }, function(data) {
+                ativarBotao('novo_usuario_gravar');
                 let erros = JSON.parse(data);
                 if (erros == 0 || erros == null) {
-                    alert('gravou');
+                    swal({
+                        type: 'success',
+                        title: 'Gravado com sucesso',
+                        time: 1500
+                    })
                 } else {
                     $.each(erros, function(indice, value) {
-                        $("#"+value).parents(".form-group").addClass("has-error");
+                        $("#" + value).parents(".form-group").addClass("has-error");
                     });
                 }
             });
