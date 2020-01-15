@@ -10,6 +10,11 @@ class CORE
             $url .= $_GET['url'];
         }
 
+        if (SESSION::getSession("id_usuario") && SESSION::getSession("id_usuario")) {
+            $log_rota   = new Log;
+            $log_rota->writeRouteLog(SESSION::getSession("id_usuario"), SESSION::getSession("id_usuario"), $url);
+        }
+
         $url = self::checkRoutes($url);
 
         $params = array();
@@ -33,7 +38,7 @@ class CORE
             }
         } else {
             $currentController = 'homeController';
-            $currentAction = 'index';
+            $currentAction     = 'index';
         }
 
         if (!file_exists('app/controllers/' . $currentController . '.php') || !method_exists($currentController, $currentAction)) {
@@ -41,7 +46,7 @@ class CORE
             $currentAction     = 'index';
         }
 
-        $c = new $currentController();
+        $c          = new $currentController();
 
         call_user_func_array(array($c, $currentAction), $params);
     }
@@ -78,7 +83,6 @@ class CORE
                 }
 
                 $url = $newurl;
-
                 break;
             }
         }

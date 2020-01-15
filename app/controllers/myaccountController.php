@@ -9,7 +9,7 @@ class myaccountController extends controller
             $dados = array();
         }
 
-        $id_usuario = SESSION::getUserId();
+        $id_usuario = SESSION::getSession("id_usuario");
 
         if ($id_usuario) {
             $user    = new User;
@@ -48,7 +48,7 @@ class myaccountController extends controller
 
         if ($nova_senha && $nova_senha_rep) {
             if ($nova_senha == $nova_senha_rep) {
-                $id_usuario = SESSION::getUserId();
+                $id_usuario = SESSION::getSession("id_usuario");
 
                 if ($id_usuario) {
                     $nova_senha_has = SAFETY::password_hash($nova_senha);
