@@ -40,6 +40,7 @@ class loginController extends CONTROLLER
         $login_digitado = VALIDATION::post('login');
         $senha_digitada = VALIDATION::post('senha');
         $recaptcha      = VALIDATION::post('g-recaptcha-response');
+        $cookie         = new cookieController;
 
         $retorno_recaptcha = self::validateReCaptcha($recaptcha);
 
@@ -57,7 +58,14 @@ class loginController extends CONTROLLER
                         $_SESSION['nome']       = $usuario['nome'];
                         $_SESSION['fk_empresa'] = $usuario['fk_empresa'];
 
-                        CONTROLLER::redirectPage("/home");
+                        
+                        if ($cookie->checkForCookie()) {
+                            CONTROLLER::redirectPage("/home");
+                        } else {
+                            session_destroy();
+                            $dados['error'] = "Usuário sem acesso ao sistema, solicite acesso ao administrador";
+                            $this->index($dados);
+                        }
                     } else {
                         $dados['error'] = "O login ou a senha que você inseriu não é válido";
                         $this->index($dados);

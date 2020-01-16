@@ -36,7 +36,7 @@ class Log
     {
         $q = "
             INSERT INTO tb_log_rotas
-                (fk_empresa,fk_usuario, rota)
+                (fk_empresa, fk_usuario, rota)
             VALUES(
                 '{$fk_empresa}',
                 '{$fk_usuario}',
