@@ -122,6 +122,7 @@ class userController extends CONTROLLER
                 $empresa,
                 $tipo_usuario,
                 $nome,
+                $cpf,
                 $data_nascimento,
                 $email,
                 $login,
@@ -129,7 +130,7 @@ class userController extends CONTROLLER
                 3
             );
         }
-        
+
         echo json_encode($erros);
     }
 

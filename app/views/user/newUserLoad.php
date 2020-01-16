@@ -10,7 +10,7 @@
                             <div class="col-md-5">
                                 <select id="empresa" class="form-control ">
                                     <?php foreach ($dados['company'] as $empresa) { ?>
-                                        <option value="<?php echo $empresa['id_empresa']; ?>"><?php echo $empresa['nome']; ?></option>                                    
+                                        <option value="<?php echo $empresa['id_empresa']; ?>"><?php echo $empresa['nome']; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -20,7 +20,7 @@
                             <div class="col-md-5">
                                 <select id="tipo_usuario" class="form-control">
                                     <?php foreach ($dados['types_user'] as $tipo_usuario) { ?>
-                                        <option value="<?php echo $tipo_usuario['id_tipo_usuario']; ?>"><?php echo $tipo_usuario['nome']; ?></option>        
+                                        <option value="<?php echo $tipo_usuario['id_tipo_usuario']; ?>"><?php echo $tipo_usuario['nome']; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -78,13 +78,13 @@
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">*Senha</label>
                             <div class="col-md-5">
-                                <input id="senha" type="text" class="form-control" placeholder="A senha deve conter no mínimo 8 caracteres com letras e números">
+                                <input id="senha" type="password" class="form-control" placeholder="A senha deve conter no mínimo 8 caracteres com letras e números">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">*Repita a senha</label>
                             <div class="col-md-5">
-                                <input id="senha_rep" type="text" class="form-control" placeholder="A senha deve conter no mínimo 8 caracteres com letras e números">
+                                <input id="senha_rep" type="password" class="form-control" placeholder="A senha deve conter no mínimo 8 caracteres com letras e números">
                             </div>
                         </div>
                     </div>
@@ -134,9 +134,11 @@
                 if (erros == 0 || erros == null) {
                     swal({
                         type: 'success',
-                        title: 'Gravado com sucesso',
-                        time: 1500
+                        title: 'Gravado com sucesso !',
+                        showConfirmButton: false,
+                        timer: 1500
                     })
+                    $("#usuarios_ativos").load(urlAtual() + "/newUser");
                 } else {
                     $.each(erros, function(indice, value) {
                         $("#" + value).parents(".form-group").addClass("has-error");
