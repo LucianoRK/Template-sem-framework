@@ -10,6 +10,22 @@ class User
         $this->conn = DB::getInstance();
     }
 
+    public function getInfoUser($user)
+    {
+        $q = "
+            SELECT 
+                tb_usuarios.*,
+                tb_empresas.nome as nome_empresa
+            FROM 
+                tb_usuarios
+                INNER JOIN tb_empresas ON tb_empresas.id_empresa = tb_usuarios.fk_empresa
+            WHERE TRUE
+                AND id_usuario = '{$user}'
+        ";
+
+        return $this->conn->fetch($q);
+    }
+
     public function getAuthenticateUser($login)
     {
         $q = "

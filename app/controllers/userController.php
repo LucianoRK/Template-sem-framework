@@ -134,7 +134,9 @@ class userController extends CONTROLLER
 
     function editUser()
     {
-        $dados = array();
+        $id_user       = VALIDATION::post('id_user');
+        $user          = new User();
+        $dados['user'] = $user->getInfoUser($id_user);
         $this->loadView('user/editUserLoad', $dados);
     }
     

@@ -66,6 +66,7 @@
             });
 
             $('.data_table').DataTable();
-            //$('#select_form_company').select2();
+           // $('#select_form_company').select2();
         });
+        
     </script>

@@ -23,11 +23,11 @@
                                     <td><?php echo $usuario['tipo_nome'] ?></td>
                                     <td class="text-center"><?php echo $usuario['quantidade_acesso'] ?></td>
                                     <td class="text-center">
-                                        <button class="btn btn-info btn-outline editar_user" title="Editar Usuário" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
-                                            <i class="la la-pencil"></i>
+                                        <button class="btn btn-info btn-floating editar_user" title="Editar Usuário" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
+                                            Editar
                                         </button>
-                                        <button class="btn btn-success btn-outline reativar_user" title="Reativar Usuário" id_usuario_reativar="<?php echo $usuario['id_usuario'] ?>">
-                                            <i class="la la-undo"></i>
+                                        <button class="btn btn-success btn-floating reativar_user" title="Reativar Usuário" id_usuario_reativar="<?php echo $usuario['id_usuario'] ?>">
+                                            Reativar
                                         </button>
                                     </td>
                                 </tr>
@@ -40,6 +40,14 @@
     </div>
 <?php } ?>
 <script>
+    function editUser(id_user) {
+        $("#usuarios_desativados").html('');
+        $("#usuarios_ativos").load(urlAtual() + "/editUser", {
+            id_user: id_user
+        }, function() {
+            ativarBotao('.editar_user');
+        });
+    }
     $(document).ready(function() {
         $('.reativar_user').on('click', function() {
             desativaBotao(this);
@@ -51,6 +59,11 @@
                 loadListUser(select_form_company);
                 ativarBotao(this);
             });
+        });
+        $('.editar_user').on('click', function() {
+            let id_usuario_editar = $(this).attr('id_usuario_editar');
+            desativaBotao(this);
+            editUser(id_usuario_editar);
         });
     });
 </script>
