@@ -65,19 +65,16 @@ class userController extends CONTROLLER
         /*Dados gerais */
         $empresa      = VALIDATION::post('empresa');
         $tipo_usuario = VALIDATION::post('tipo_usuario');
-
         /*Dados Pessoais */
         $nome            = VALIDATION::post('nome');
         $cpf             = VALIDATION::post('cpf');
         $email           = VALIDATION::post('email');
         $data_nascimento = VALIDATION::post('data_nascimento');
-
         /*Dados residenciais */
         $cidade      = VALIDATION::post('cidade');
         $estado      = VALIDATION::post('estado');
         $rua         = VALIDATION::post('rua');
         $numero_casa = VALIDATION::post('numero_casa');
-
         /*Dados usuario */
         $login     = VALIDATION::post('login');
         $senha     = VALIDATION::post('senha');
@@ -110,7 +107,6 @@ class userController extends CONTROLLER
         if (strlen($senha_rep) < 7) {
             array_push($erros, 'senha_rep');
         }
-
         if ($senha != $senha_rep) {
             array_push($erros, 'senha');
             array_push($erros, 'senha');
@@ -129,6 +125,8 @@ class userController extends CONTROLLER
                 SAFETY::password_hash($senha),
                 3
             );
+            
+            //LOG::writeLog(SESSION::getSession('id_usuario'), 1, $log);
         }
 
         echo json_encode($erros);

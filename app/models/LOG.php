@@ -24,7 +24,7 @@ class Log
         return $this->conn->fetchAll($q);
     }
 
-    public function writeLog($string)
+    public function writeLogTxt($string)
     {
         $fp = fopen('log.txt', 'a');
         fwrite($fp, "\n\n");
@@ -45,5 +45,20 @@ class Log
         ";
 
         return $this->conn->execute($q);
+    }
+
+    public function writeLog($fk_usuario, $fk_log, $obs = FALSE)
+    {
+        $q = "
+            INSERT INTO tbl_usuarios_logs
+                (fk_usuario, fk_log, observacao)
+            VALUES(
+                '{$fk_usuario}',
+                '{$fk_log}',
+                '{$obs}'
+            )
+        ";
+
+        $this->conn->execute($q);
     }
 }
