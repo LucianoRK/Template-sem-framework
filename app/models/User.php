@@ -157,4 +157,19 @@ class User
 
         $this->conn->execute($q);
     }
+
+    function getUserAcesso($id_usuario, $fk_empresa)
+    {
+        $q = "
+            SELECT 
+                quantidade_acesso
+            FROM 
+                tb_usuarios
+            WHERE TRUE
+                AND id_usuario = '{$id_usuario}'
+                AND fk_empresa = '{$fk_empresa}'
+        ";
+
+        return $this->conn->fetchAttr($q, "quantidade_acesso");
+    }
 }
