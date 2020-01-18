@@ -91,6 +91,34 @@ class User
         return $this->conn->execute($q);
     }
 
+    public function deleteUser($id_user)
+    {
+        $q = "
+            UPDATE 
+                tb_usuarios 
+            SET
+                ativo = 0
+            WHERE 
+                id_usuario = '{$id_user}'
+        ";
+
+        return $this->conn->execute($q);
+    }
+
+    public function reactivateUser($id_user)
+    {
+        $q = "
+            UPDATE 
+                tb_usuarios 
+            SET
+                ativo = 1
+            WHERE 
+                id_usuario = '{$id_user}'
+        ";
+
+        return $this->conn->execute($q);
+    }
+
     public function recordNewUser(
         $fk_empresa,
         $fk_tipo_usuario,

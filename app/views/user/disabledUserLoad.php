@@ -22,7 +22,14 @@
                                     <td><?php echo $usuario['nome'] ?></td>
                                     <td><?php echo $usuario['tipo_nome'] ?></td>
                                     <td class="text-center"><?php echo $usuario['quantidade_acesso'] ?></td>
-                                    <td class="text-center"></td>
+                                    <td class="text-center">
+                                        <button class="btn btn-info btn-outline editar_user" title="Editar Usuário" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
+                                            <i class="la la-pencil"></i>
+                                        </button>
+                                        <button class="btn btn-success btn-outline reativar_user" title="Reativar Usuário" id_usuario_reativar="<?php echo $usuario['id_usuario'] ?>">
+                                            <i class="la la-undo"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -32,3 +39,18 @@
         </div>
     </div>
 <?php } ?>
+<script>
+    $(document).ready(function() {
+        $('.reativar_user').on('click', function() {
+            desativaBotao(this);
+            let id_usuario_reativar = $(this).attr('id_usuario_reativar');
+            $.post(urlAtual() + "/reactivateUser", {
+                id_usuario_reativar: id_usuario_reativar
+            }, function(data) {
+                let select_form_company = $("#select_form_company").val();
+                loadListUser(select_form_company);
+                ativarBotao(this);
+            });
+        });
+    });
+</script>

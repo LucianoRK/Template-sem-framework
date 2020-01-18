@@ -139,4 +139,16 @@ class userController extends CONTROLLER
         $dados = array();
         $this->loadView('user/editUserLoad', $dados);
     }
+    
+    function deleteUser()
+    {
+        $user = new User;
+        $user->deleteUser(VALIDATION::post('id_usuario_excluir'));
+    }
+
+    function reactivateUser()
+    {
+        $user = new User;
+        $user->reactivateUser(VALIDATION::post('id_usuario_reativar'));
+    }
 }

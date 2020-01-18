@@ -21,6 +21,8 @@ if (SESSION::checkLoggedInUser()) {
         $routes['/usuarios/newUser']             = '/user/newUser';
         $routes['/usuarios/editUser']            = '/user/editUser';
         $routes['/usuarios/saveUserData']        = '/user/saveUser';
+        $routes['/usuarios/deleteUser']          = '/user/deleteUser';
+        $routes['/usuarios/reactivateUser']      = '/user/reactivateUser';
     }
 
     /* PERMISSION */ {

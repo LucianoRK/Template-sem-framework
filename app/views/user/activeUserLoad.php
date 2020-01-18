@@ -30,7 +30,14 @@
                                     <td><?php echo $usuario['nome'] ?></td>
                                     <td><?php echo $usuario['tipo_nome'] ?></td>
                                     <td class="text-center"><?php echo $usuario['quantidade_acesso'] ?></td>
-                                    <td class="text-center"></td>
+                                    <td class="text-center">
+                                        <button class="btn btn-info btn-outline editar_user" title="Editar Usuário" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
+                                            <i class="la la-pencil"></i>
+                                        </button>
+                                        <button class="btn btn-danger btn-outline excluir_user" title="Deletar Usuário" id_usuario_excluir="<?php echo $usuario['id_usuario'] ?>">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -49,6 +56,16 @@
 <?php } ?>
 <script>
     $(document).ready(function() {
-     
+        $('.excluir_user').on('click', function() {
+            desativaBotao(this);
+            let id_usuario_excluir = $(this).attr('id_usuario_excluir');
+            $.post(urlAtual() + "/deleteUser", {
+                id_usuario_excluir: id_usuario_excluir
+            }, function(data) {
+                let select_form_company = $("#select_form_company").val();
+                loadListUser(select_form_company);
+                ativarBotao(this);
+            });
+        });
     });
 </script>

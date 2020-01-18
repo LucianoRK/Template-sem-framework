@@ -41,7 +41,7 @@
                 $("#usuarios_desativados").load(urlAtual() + "/getListDisableUsers", {
                     company: company
                 }, function() {
-                    ativarBotao('buscar_dados');
+                    ativarBotao('#buscar_dados');
                 });
             });
         }
@@ -49,19 +49,19 @@
         function newUser() {
             $("#usuarios_desativados").html('');
             $("#usuarios_ativos").load(urlAtual() + "/newUser", function() {
-                ativarBotao('novo_usuario');
+                ativarBotao('#novo_usuario_btn');
             });
         }
 
         $(document).ready(function() {
             $('#buscar_dados').on('click', function() {
                 let select_form_company = $("#select_form_company").val();
-                desativaBotao('buscar_dados');
+                desativaBotao('#buscar_dados');
                 loadListUser(select_form_company);
             });
 
             $('#novo_usuario_btn').on('click', function() {
-                desativaBotao('novo_usuario');
+                desativaBotao('#novo_usuario_btn');
                 newUser();
             });
 

@@ -112,7 +112,7 @@
 <script>
     $(document).ready(function() {
         $('#novo_usuario_gravar').on('click', function() {
-            desativaBotao('novo_usuario_gravar');
+            desativaBotao('#novo_usuario_gravar');
             $(".form-group").removeClass("has-error");
             $.post(urlAtual() + "/saveUserData", {
                 empresa: $("#empresa").val(),
@@ -129,7 +129,7 @@
                 senha: $("#senha").val(),
                 senha_rep: $("#senha_rep").val()
             }, function(data) {
-                ativarBotao('novo_usuario_gravar');
+                ativarBotao('#novo_usuario_gravar');
                 let erros = JSON.parse(data);
                 if (erros == 0 || erros == null) {
                     swal({
@@ -147,9 +147,9 @@
             });
         });
         $('#novo_usuario_cancelar').on('click', function() {
-            desativaBotao('novo_usuario_cancelar');
+            desativaBotao('#novo_usuario_cancelar');
                 $("#usuarios_ativos").load(urlAtual() + "/newUser", function() {
-                    ativarBotao('novo_usuario_cancelar');
+                    ativarBotao('#novo_usuario_cancelar');
                 });
         });
     });

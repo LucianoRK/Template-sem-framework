@@ -1,11 +1,11 @@
-function desativaBotao(id) {
-    $("#" + id).addClass('qt-loader qt-loader-mini qt-loader-right');
-    $("#" + id).attr("disabled", true);
+function desativaBotao(nome) {
+    $(nome).addClass('qt-loader qt-loader-mini qt-loader-right');
+    $(nome).attr("disabled", true);
 }
 
-function ativarBotao(id) {
-    $("#" + id).removeClass('qt-loader qt-loader-mini qt-loader-right');
-    $("#" + id).attr("disabled", false);
+function ativarBotao(nome) {
+    $(nome).removeClass('qt-loader qt-loader-mini qt-loader-right');
+    $(nome).attr("disabled", false);
 }
 
 function urlAtual() {
