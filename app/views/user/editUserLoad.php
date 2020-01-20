@@ -17,9 +17,7 @@
                             <label class="control-label text-right col-md-3">*Tipo de Usuario</label>
                             <div class="col-md-5">
                                 <select id="tipo_usuario" class="form-control" disabled="">
-                                    <?php foreach ($dados['types_user'] as $tipo_usuario) { ?>
-                                        <option value="<?php echo $tipo_usuario['id_tipo_usuario']; ?>"><?php echo $tipo_usuario['nome']; ?></option>
-                                    <?php } ?>
+                                    <option value="<?php echo $dados['user']['id_tipo_usuario']; ?>"><?php echo $dados['user']['nome_tipo_usuario']; ?></option>
                                 </select>
                             </div>
                         </div>
@@ -94,8 +92,8 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="offset-sm-3 col-md-5">
-                                    <button id="novo_usuario_gravar" class="btn btn-primary btn-rounded">Gravar</button>
-                                    <button id="novo_usuario_cancelar" class="btn btn-secondary clear-form btn-rounded btn-outline ">Cancelar</button>
+                                    <button id="editar_usuario_gravar" class="btn btn-primary btn-rounded">Gravar</button>
+                                    <button id="editar_usuario_cancelar" class="btn btn-secondary clear-form btn-rounded btn-outline ">Cancelar</button>
                                 </div>
                             </div>
                         </div>
@@ -109,10 +107,11 @@
 </div>
 <script>
     $(document).ready(function() {
-        $('#novo_usuario_gravar').on('click', function() {
-            desativaBotao('#novo_usuario_gravar');
+        $('#editar_usuario_gravar').on('click', function() {
+            desativaBotao('#editar_usuario_gravar');
             $(".form-group").removeClass("has-error");
             $.post(urlAtual() + "/saveUserData", {
+                id_user: '<?php echo $dados['user']['id_usuario'] ?>',
                 empresa: $("#empresa").val(),
                 tipo_usuario: $("#tipo_usuario").val(),
                 nome: $("#nome").val(),
@@ -127,16 +126,16 @@
                 senha: $("#senha").val(),
                 senha_rep: $("#senha_rep").val()
             }, function(data) {
-                ativarBotao('#novo_usuario_gravar');
+                ativarBotao('#editar_usuario_gravar');
                 let erros = JSON.parse(data);
                 if (erros == 0 || erros == null) {
                     swal({
                         type: 'success',
-                        title: 'Gravado com sucesso !',
+                        title: 'Editado com sucesso !',
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    $("#usuarios_ativos").load(urlAtual() + "/newUser");
+                    loadListUser($("#select_form_company").val());
                 } else {
                     $.each(erros, function(indice, value) {
                         $("#" + value).parents(".form-group").addClass("has-error");
@@ -144,7 +143,7 @@
                 }
             });
         });
-        $('#novo_usuario_cancelar').on('click', function() {
+        $('#editar_usuario_cancelar').on('click', function() {
             $("#usuarios_ativos").html('');
         });
     });

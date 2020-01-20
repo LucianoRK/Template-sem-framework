@@ -15,10 +15,14 @@ class User
         $q = "
             SELECT 
                 tb_usuarios.*,
-                tb_empresas.nome as nome_empresa
+                tb_empresas.id_empresa,
+                tb_empresas.nome as nome_empresa,
+                tb_tipos_usuario.id_tipo_usuario,
+                tb_tipos_usuario.nome as nome_tipo_usuario
             FROM 
                 tb_usuarios
                 INNER JOIN tb_empresas ON tb_empresas.id_empresa = tb_usuarios.fk_empresa
+                INNER JOIN tb_tipos_usuario ON tb_tipos_usuario.id_tipo_usuario = tb_usuarios.fk_tipo_usuario
             WHERE TRUE
                 AND id_usuario = '{$user}'
         ";
@@ -172,6 +176,37 @@ class User
         ";
 
         $this->conn->execute($q);
+    }
+
+
+    public function updateUser(
+        $id_user,
+        $fk_empresa,
+        $fk_tipo_usuario,
+        $nome,
+        $cpf,
+        $data_nascimento,
+        $email,
+        $login,
+        $senha
+    ) {
+        $q = "
+            UPDATE 
+                tb_usuarios 
+            SET
+                fk_empresa      = '{$fk_empresa}',
+                fk_tipo_usuario = '{$fk_tipo_usuario}',
+                nome            = '{$nome}',
+                cpf             = '{$cpf}',
+                data_nascimento = '{$data_nascimento}',
+                email           = '{$email}', 
+                login           = '{$login}', 
+                senha           = '{$senha}' 
+            WHERE 
+                id_usuario = '{$id_user}'
+        ";
+
+        return $this->conn->execute($q);
     }
 
     function getUserAcesso($id_usuario, $fk_empresa)

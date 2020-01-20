@@ -63,6 +63,7 @@ class userController extends CONTROLLER
         $erros = array();
 
         /*Dados gerais */
+        $id_user      = VALIDATION::post('id_user');
         $empresa      = VALIDATION::post('empresa');
         $tipo_usuario = VALIDATION::post('tipo_usuario');
         /*Dados Pessoais */
@@ -114,18 +115,31 @@ class userController extends CONTROLLER
         
         if ($erros == 0 || $erros == null) {
             $user = new User;
-            $user->recordNewUser(
-                $empresa,
-                $tipo_usuario,
-                $nome,
-                $cpf,
-                $data_nascimento,
-                $email,
-                $login,
-                SAFETY::password_hash($senha),
-                3
-            );
-            
+            if($id_user){
+                $user->updateUser(
+                    $id_user,
+                    $empresa,
+                    $tipo_usuario,
+                    $nome,
+                    $cpf,
+                    $data_nascimento,
+                    $email,
+                    $login,
+                    SAFETY::password_hash($senha)
+                );
+            }else{
+                $user->recordNewUser(
+                    $empresa,
+                    $tipo_usuario,
+                    $nome,
+                    $cpf,
+                    $data_nascimento,
+                    $email,
+                    $login,
+                    SAFETY::password_hash($senha),
+                    3
+                );
+            }
             //LOG::writeLog(SESSION::getSession('id_usuario'), 1, $log);
         }
 
