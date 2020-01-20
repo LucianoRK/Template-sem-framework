@@ -90,7 +90,7 @@ class userController extends CONTROLLER
         if (empty($nome) || strlen($nome) < 2) {
             array_push($erros, 'nome');
         }
-        if (!is_numeric($cpf) || strlen($cpf) != 11 || !VALIDATION::cpfvalidation($cpf)) {
+        if (!VALIDATION::cpfvalidation($cpf)) {
             array_push($erros, 'cpf');
         }
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
