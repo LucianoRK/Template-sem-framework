@@ -96,7 +96,7 @@ class userController extends CONTROLLER
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             array_push($erros, 'email');
         }
-        if (empty($data_nascimento)) {
+        if (!DATE::dateToMysql($data_nascimento) && !empty($data_nascimento)) {
             array_push($erros, 'data_nascimento');
         }
         if (strlen($login) < 5) {
@@ -122,7 +122,7 @@ class userController extends CONTROLLER
                     $tipo_usuario,
                     $nome,
                     $cpf,
-                    $data_nascimento,
+                    DATE::dateToMysql($data_nascimento),
                     $email,
                     $login,
                     SAFETY::password_hash($senha)
