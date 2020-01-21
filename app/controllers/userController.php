@@ -46,14 +46,15 @@ class userController extends CONTROLLER
     function newUser()
     {
         $company = new Company;
-        $User    = new User;
+        $user    = new User;
+        $estado  = new Estado;
 
         $dados['company'] = $company->getAllCompanyByUser(SESSION::getSession('id_usuario'));
         if (!$dados['company']) {
             $dados['company'] = $company->getInfoCompany(SESSION::getSession('fk_empresa'));
         }
-        $dados['types_user'] = $User->getAllTypeUser();
-
+        $dados['types_user'] = $user->getAllTypeUser();
+        $dados['estados']    = $estado->getAllStates();
 
         $this->loadView('user/newUserLoad', $dados);
     }
@@ -169,5 +170,23 @@ class userController extends CONTROLLER
     {
         $user = new User;
         $user->reactivateUser(VALIDATION::post('id_usuario_reativar'));
+    }
+
+    function showCities()
+    {
+        $id_estado = VALIDATION::post('id_estado');
+
+        if ($id_estado) {
+            $cidade           = new Cidade;
+            $dados['cidades'] = $cidade->getAllCitiesByState($id_estado);
+    
+            if ($dados['cidades']) {
+                $this->loadView('endereco/cities', $dados);
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }   
     }
 }

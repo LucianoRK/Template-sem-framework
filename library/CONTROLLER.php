@@ -13,7 +13,7 @@ class CONTROLLER
     static function loadTemplate($viewName, $dados = array())
     {
         include 'public/matriz/topbar.php';
-        //include 'public/matriz/footer.php';
+        include 'public/matriz/footer.php';
     }
 
     static function loadViewInTemplate($viewName, $dados = array())

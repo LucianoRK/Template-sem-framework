@@ -23,6 +23,7 @@ if (SESSION::checkLoggedInUser()) {
         $routes['/usuarios/saveUserData']        = '/user/saveUser';
         $routes['/usuarios/deleteUser']          = '/user/deleteUser';
         $routes['/usuarios/reactivateUser']      = '/user/reactivateUser';
+        $routes['/usuarios/buscar/cidades']      = '/user/showCities';
     }
 
     /* PERMISSION */ {

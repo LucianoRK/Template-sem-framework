@@ -14,6 +14,9 @@ function urlAtual() {
     return window.location.href;
 }
 
+function select2OpcaoUm() {
+    $("#s2_demo1").select2();
+}
 
 
 

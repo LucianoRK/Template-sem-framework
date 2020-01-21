@@ -7,7 +7,7 @@
                     <div class="form-body">
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">*Empresa</label>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <select id="empresa" class="form-control ">
                                     <?php foreach ($dados['company'] as $empresa) { ?>
                                         <option value="<?php echo $empresa['id_empresa']; ?>"><?php echo $empresa['nome']; ?></option>
@@ -17,7 +17,7 @@
                         </div>
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">*Tipo de Usuario</label>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <select id="tipo_usuario" class="form-control">
                                     <?php foreach ($dados['types_user'] as $tipo_usuario) { ?>
                                         <option value="<?php echo $tipo_usuario['id_tipo_usuario']; ?>"><?php echo $tipo_usuario['nome']; ?></option>
@@ -28,35 +28,47 @@
                         <hr class="dashed">
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">*Nome Completo</label>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <input id="nome" type="text" placeholder="Nome completo do usuário" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">*CPF</label>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <input id="cpf" type="text" placeholder="CPF do usuário" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">Email</label>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <input id="email" type="text" placeholder="Email do Usuário" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">Data de nascimento</label>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <input id="data_nascimento" type="date" class="form-control" placeholder="dd/mm/yyyy">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="control-label text-right col-md-3">Cidade</label>
-                            <div class="col-md-4">
-                                <input id="cidade" type="text" class="form-control" placeholder="Cidade do usuário">
+                            <label class="control-label text-right col-md-3">Cep</label>
+                            <div class="col-md-2">
+                                <input id="cep" name="cep" type="text" class="form-control" placeholder="CEP">
                             </div>
-                            <div class="col-md-1">
-                                <input id="estado" type="text" class="form-control" placeholder="Estado">
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Estado</label>
+                            <div class="col-md-3">
+                                <select class="form-control estados" id="s2_demo1">
+                                    <option disabled selected value=""> Selecione... </option>
+                                    <?php foreach ($dados['estados'] as $estado) { ?>
+                                        <option value="<?php echo $estado['id_estado']; ?>"> <?php echo $estado['nome']; ?> </option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3" id="cidades">
+                                <input type="text" class="form-control" disabled placeholder="Cidades">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -64,26 +76,26 @@
                             <div class="col-md-4">
                                 <input id="rua" type="text" class="form-control" placeholder="Nome da rua do usuário">
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                                 <input id="numero_casa" type="text" class="form-control" placeholder="Número">
                             </div>
                         </div>
                         <hr class="dashed ">
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">*Login</label>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <input id="login" type="text" class="form-control" placeholder="O login deve conter no mínimo 6 caracteres com letras e números">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">*Senha</label>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <input id="senha" type="password" class="form-control" placeholder="A senha deve conter no mínimo 8 caracteres com letras e números">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">*Repita a senha</label>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <input id="senha_rep" type="password" class="form-control" placeholder="A senha deve conter no mínimo 8 caracteres com letras e números">
                             </div>
                         </div>
@@ -110,7 +122,20 @@
 </section>
 </div>
 <script>
+    function buscar_cidades() {
+        $('.estados').on('change', function() {
+            let id_estado = $(this).val();
+
+            $("#cidades").load(urlAtual() + "/buscar/cidades", {id_estado: id_estado}, function() {
+
+            });
+        });
+    }
+
     $(document).ready(function() {
+        select2OpcaoUm();
+        buscar_cidades();
+
         $('#novo_usuario_gravar').on('click', function() {
             desativaBotao('#novo_usuario_gravar');
             $(".form-group").removeClass("has-error");
