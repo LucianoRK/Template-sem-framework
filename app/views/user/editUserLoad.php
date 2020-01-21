@@ -43,7 +43,7 @@
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">Data de nascimento</label>
                             <div class="col-md-5">
-                                <input id="data_nascimento" class="form-control" placeholder="dd/mm/yyyy" value="<?php echo DATE::mysqlToDate($dados['user']['data_nascimento'])?>">
+                                <input id="data_nascimento" class="form-control" placeholder="dd/mm/yyyy" value="<?php echo DATE::mysqlToDate($dados['user']['data_nascimento']) ?>">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -139,6 +139,14 @@
                 } else {
                     $.each(erros, function(indice, value) {
                         $("#" + value).parents(".form-group").addClass("has-error");
+                        if (value == 'login_repetido') {
+                            swal({
+                                type: 'error',
+                                title: 'Este login já existe em nosso sistema favor escolher outro.',
+                                showConfirmButton: false,
+                                timer: 3500
+                            })
+                        }
                     });
                 }
             });

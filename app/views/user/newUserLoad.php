@@ -142,15 +142,23 @@
                 } else {
                     $.each(erros, function(indice, value) {
                         $("#" + value).parents(".form-group").addClass("has-error");
+                        if (value == 'login_repetido') {
+                            swal({
+                                type: 'error',
+                                title: 'Este login já existe em nosso sistema favor escolher outro.',
+                                showConfirmButton: false,
+                                timer: 3500
+                            })
+                        }
                     });
                 }
             });
         });
         $('#novo_usuario_cancelar').on('click', function() {
             desativaBotao('#novo_usuario_cancelar');
-                $("#usuarios_ativos").load(urlAtual() + "/newUser", function() {
-                    ativarBotao('#novo_usuario_cancelar');
-                });
+            $("#usuarios_ativos").load(urlAtual() + "/newUser", function() {
+                ativarBotao('#novo_usuario_cancelar');
+            });
         });
     });
 </script>

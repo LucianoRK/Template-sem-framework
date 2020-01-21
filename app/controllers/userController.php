@@ -61,6 +61,7 @@ class userController extends CONTROLLER
     function saveUser()
     {
         $erros = array();
+        $user = new User;
 
         /*Dados gerais */
         $id_user      = VALIDATION::post('id_user');
@@ -96,16 +97,21 @@ class userController extends CONTROLLER
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             array_push($erros, 'email');
         }
-        if (!DATE::dateToMysql($data_nascimento) && !empty($data_nascimento)) {
+        if (!DATE::dateToMysql($data_nascimento) && !empty($data_nascimento) && $id_user) {
             array_push($erros, 'data_nascimento');
         }
         if (strlen($login) < 5) {
             array_push($erros, 'login');
         }
-        if (strlen($senha) < 7) {
+        /* Verifico se o login ja existe */
+        if($user->getUserByLogin($login, $id_user)){
+            array_push($erros, 'login');
+            array_push($erros, 'login_repetido');
+        }
+        if (strlen($senha) < 7 || !VALIDATION::lettersNumber($senha)) {
             array_push($erros, 'senha');
         }
-        if (strlen($senha_rep) < 7) {
+        if (strlen($senha_rep) < 7 || !VALIDATION::lettersNumber($senha)) {
             array_push($erros, 'senha_rep');
         }
         if ($senha != $senha_rep) {
@@ -114,7 +120,6 @@ class userController extends CONTROLLER
         }
         
         if ($erros == 0 || $erros == null) {
-            $user = new User;
             if($id_user){
                 $user->updateUser(
                     $id_user,

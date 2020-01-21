@@ -53,4 +53,13 @@ class VALIDATION
         }
         return true;
     }
+
+    /** Verifica se existe numeros e letras na string */
+    static function lettersNumber($string){
+        if(preg_match("/[a-z]+/i", $string) && preg_match("/[0-9]+/", $string)){
+            return true;
+        }else{
+           return false;
+        }
+    }
 }

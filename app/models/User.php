@@ -223,4 +223,22 @@ class User
 
         return $this->conn->fetchAttr($q, "quantidade_acesso");
     }
+
+    public function getUserByLogin($login, $id_user = false)
+    {
+        if(!$id_user){
+            $id_user = 0;
+        }
+        $q = "
+            SELECT 
+                id_usuario
+            FROM 
+                tb_usuarios
+            WHERE TRUE
+                AND login = '{$login}'
+                AND id_usuario != '{$id_user}'
+        ";
+
+        return $this->conn->fetch($q);
+    }
 }
