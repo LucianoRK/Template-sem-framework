@@ -112,7 +112,7 @@
 
 			$.ajax({
 				type: "post",
-				url: urlAtual() + "/entrando/sistema",
+				url: urlAbsoluta() + "/entrando/sistema",
 				data: dados,
 				success: function(response) {
 					if (response) {
@@ -131,7 +131,7 @@
 						})
 
 						setTimeout(function() {
-							window.location.href = urlAtual() + "/home";
+							window.location.href = urlAbsoluta() + "/home";
 						}, 3);
 					}
 				}

@@ -110,7 +110,7 @@
         $('#editar_usuario_gravar').on('click', function() {
             desativaBotao('#editar_usuario_gravar');
             $(".form-group").removeClass("has-error");
-            $.post(urlAtual() + "/usuarios/saveUserData", {
+            $.post(urlAtual() + "/saveUserData", {
                 id_user: '<?php echo $dados['user']['id_usuario'] ?>',
                 empresa: $("#empresa").val(),
                 tipo_usuario: $("#tipo_usuario").val(),

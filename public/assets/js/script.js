@@ -11,6 +11,10 @@ function ativarBotao(nome) {
 }
 
 function urlAtual() {
+    return window.location.href;
+}
+
+function urlAbsoluta() {
     return "http://localhost/raiz";
 }
 

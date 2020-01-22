@@ -35,10 +35,10 @@
 
     <script>
         function loadListUser(company) {
-            $("#usuarios_ativos").load(urlAtual() + "/usuarios/getListActiveUsers", {
+            $("#usuarios_ativos").load(urlAtual() + "/getListActiveUsers", {
                 company: company
             }, function() {
-                $("#usuarios_desativados").load(urlAtual() + "/usuarios/getListDisableUsers", {
+                $("#usuarios_desativados").load(urlAtual() + "/getListDisableUsers", {
                     company: company
                 }, function() {
                     ativarBotao('#buscar_dados');
