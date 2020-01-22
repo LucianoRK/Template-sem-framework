@@ -19,7 +19,7 @@ class loginController extends CONTROLLER
     public static function validateReCaptcha($recaptcha)
     {
         if (isset($recaptcha) && !empty($recaptcha)) {
-            $chave_secreta      = "6LeEas8UAAAAAEoif3pDSc9eVnkBMcjBLYVsSw_o";
+            $chave_secreta      = CONFIG::$LOGIN_CAPTCHA_SECRET_SERVER;
             $ip_logado          = $_SERVER['REMOTE_ADDR'];
             $retorno_google     = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$chave_secreta&response=$recaptcha&remoteip=$ip_logado");
             $retorno_convertido = json_decode($retorno_google, true);
@@ -58,29 +58,26 @@ class loginController extends CONTROLLER
                         $_SESSION['nome']       = $usuario['nome'];
                         $_SESSION['fk_empresa'] = $usuario['fk_empresa'];
 
-                        
-                        if ($cookie->checkForCookie()) {
-                            CONTROLLER::redirectPage("/home");
-                        } else {
+                        if (!$cookie->checkForCookie()) {
                             session_destroy();
-                            $dados['error'] = "Usuário sem acesso ao sistema, solicite acesso ao administrador";
-                            $this->index($dados);
+                            echo "Usuário sem acesso ao sistema, solicite acesso ao administrador";
+                            die();
                         }
                     } else {
-                        $dados['error'] = "O login ou a senha que você inseriu não é válido";
-                        $this->index($dados);
+                        echo "O login ou a senha que você inseriu não é válido";
+                        die();
                     }
                 } else {
-                    $dados['error'] = "O login ou a senha que você inseriu não é válido";
-                    $this->index($dados);
+                    echo"O login ou a senha que você inseriu não é válido";
+                    die();
                 }
             } else {
-                $dados['error'] = "O login ou a senha que você inseriu não é válido";
-                $this->index($dados);
+                echo "O login ou a senha que você inseriu não é válido";
+                die();
             }
         } else {
-            $dados['error'] = "reCAPTCHA inválido!";
-            $this->index($dados);
+            echo "reCAPTCHA inválido!";
+            die();
         }
     }
 }

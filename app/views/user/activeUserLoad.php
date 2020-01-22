@@ -57,7 +57,7 @@
 <script>
     function editUser(id_user) {
         $("#usuarios_desativados").html('');
-        $("#usuarios_ativos").load(urlAtual() + "/editUser", {
+        $("#usuarios_ativos").load(urlAtual() + "/usuarios/editUser", {
             id_user: id_user
         }, function() {
             ativarBotao('.editar_user');
@@ -67,7 +67,7 @@
         $('.excluir_user').on('click', function() {
             desativaBotao(this);
             let id_usuario_excluir = $(this).attr('id_usuario_excluir');
-            $.post(urlAtual() + "/deleteUser", {
+            $.post(urlAtual() + "/usuarios/deleteUser", {
                 id_usuario_excluir: id_usuario_excluir
             }, function(data) {
                 let select_form_company = $("#select_form_company").val();

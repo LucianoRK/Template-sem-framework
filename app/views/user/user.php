@@ -35,10 +35,10 @@
 
     <script>
         function loadListUser(company) {
-            $("#usuarios_ativos").load(urlAtual() + "/getListActiveUsers", {
+            $("#usuarios_ativos").load(urlAtual() + "/usuarios/getListActiveUsers", {
                 company: company
             }, function() {
-                $("#usuarios_desativados").load(urlAtual() + "/getListDisableUsers", {
+                $("#usuarios_desativados").load(urlAtual() + "/usuarios/getListDisableUsers", {
                     company: company
                 }, function() {
                     ativarBotao('#buscar_dados');
@@ -48,7 +48,7 @@
 
         function newUser() {
             $("#usuarios_desativados").html('');
-            $("#usuarios_ativos").load(urlAtual() + "/newUser", function() {
+            $("#usuarios_ativos").load(urlAtual() + "/usuarios/newUser", function() {
                 ativarBotao('#novo_usuario_btn');
             });
         }

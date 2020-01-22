@@ -16,7 +16,8 @@ class CONFIG {
     static $LOGIN_SLEEP_BASE_DELAY 		= 2;
     static $LOGIN_FAILED_ATTEMPTS_RANGE	= 15; // em minutos 
     static $LOGIN_RECAPTCHA 			= FALSE;
-    static $LOGIN_CAPTCHA_SECRET 		= '6Lf0Lq8UAAAAADIQg3e_6G-X1FQfJc__n-5DP-Pf';
+    static $LOGIN_CAPTCHA_SECRET_CLIENT = '6LeEas8UAAAAAMZROtSWdO2Bt5j1ubqQ7oaBP1X_';
+    static $LOGIN_CAPTCHA_SECRET_SERVER	= '6LeEas8UAAAAAEoif3pDSc9eVnkBMcjBLYVsSw_o';
     static $PASSWORD_DEFAULT 		    = 'Y_A-NNKLf568_adR#$11R';
     /*
      * Mail

@@ -11,7 +11,7 @@ function ativarBotao(nome) {
 }
 
 function urlAtual() {
-    return window.location.href;
+    return "http://localhost/raiz";
 }
 
 function select2OpcaoUm() {

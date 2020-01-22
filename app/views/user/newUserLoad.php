@@ -126,7 +126,7 @@
         $('.estados').on('change', function() {
             let id_estado = $(this).val();
 
-            $("#cidades").load(urlAtual() + "/buscar/cidades", {id_estado: id_estado}, function() {
+            $("#cidades").load(urlAtual() + "/usuarios/buscar/cidades", {id_estado: id_estado}, function() {
 
             });
         });
@@ -139,7 +139,7 @@
         $('#novo_usuario_gravar').on('click', function() {
             desativaBotao('#novo_usuario_gravar');
             $(".form-group").removeClass("has-error");
-            $.post(urlAtual() + "/saveUserData", {
+            $.post(urlAtual() + "/usuarios/saveUserData", {
                 empresa: $("#empresa").val(),
                 tipo_usuario: $("#tipo_usuario").val(),
                 nome: $("#nome").val(),
@@ -163,7 +163,7 @@
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    $("#usuarios_ativos").load(urlAtual() + "/newUser");
+                    $("#usuarios_ativos").load(urlAtual() + "/usuarios/newUser");
                 } else {
                     $.each(erros, function(indice, value) {
                         $("#" + value).parents(".form-group").addClass("has-error");
