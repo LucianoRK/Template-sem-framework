@@ -23,11 +23,11 @@
                                     <td><?php echo $usuario['tipo_nome'] ?></td>
                                     <td class="text-center"><?php echo $usuario['quantidade_acesso'] ?></td>
                                     <td class="text-center">
-                                        <button class="btn btn-info btn-floating editar_user" title="Editar Usuário" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
+                                        <button class="btn btn-info btn-rounded editar_user" title="Editar Usuário" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
                                             Editar
                                         </button>
-                                        <button class="btn btn-success btn-floating reativar_user" title="Reativar Usuário" id_usuario_reativar="<?php echo $usuario['id_usuario'] ?>">
-                                            Reativar
+                                        <button class="btn btn-success btn-rounded reativar_user" title="Reativar Usuário" id_usuario_reativar="<?php echo $usuario['id_usuario'] ?>">
+                                            Ativar
                                         </button>
                                     </td>
                                 </tr>

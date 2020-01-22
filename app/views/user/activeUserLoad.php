@@ -31,10 +31,10 @@
                                     <td><?php echo $usuario['tipo_nome'] ?></td>
                                     <td class="text-center"><?php echo $usuario['quantidade_acesso'] ?></td>
                                     <td class="text-center">
-                                        <button class="btn btn-info btn-floating editar_user" title="Editar Usuário" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
+                                        <button class="btn btn-info btn-rounded editar_user" title="Editar Usuário" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
                                             Editar
                                         </button>
-                                        <button class="btn btn-danger btn-floating excluir_user" title="Deletar Usuário" id_usuario_excluir="<?php echo $usuario['id_usuario'] ?>">
+                                        <button class="btn btn-danger btn-rounded excluir_user" title="Deletar Usuário" id_usuario_excluir="<?php echo $usuario['id_usuario'] ?>">
                                             Desativar
                                         </button>
                                     </td>
