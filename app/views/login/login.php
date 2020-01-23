@@ -51,15 +51,6 @@
 	<div class="container">
 		<div class="sign-in-form">
 			<div class="card">
-				<?php if (isset($error) && !empty($error)) { ?>
-					<div class="alert alert-danger alert-dismissible fade show" role="alert">
-						<strong>Atenção !</strong> <?php echo $error; ?>
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true" class="la la-close"></span>
-						</button>
-					</div>
-				<?php } ?>
-
 				<div class="card-body">
 					<form>
 						<a href="" class="brand text-center d-block m-b-20">
@@ -109,6 +100,7 @@
 	function logar() {
 		$('#logar').on('click', function() {
 			let dados = $("form").serialize();
+			desativaBotao('#logar');
 
 			$.ajax({
 				type: "post",
@@ -116,6 +108,7 @@
 				data: dados,
 				success: function(response) {
 					if (response) {
+						ativarBotao('#logar');
 						swal({
 							type: 'error',
 							title: response,
@@ -123,16 +116,7 @@
 							timer: 3500
 						})
 					} else {
-						swal({
-							type: 'success',
-							title: 'Logado com sucesso !',
-							showConfirmButton: false,
-							timer: 1500
-						})
-
-						setTimeout(function() {
-							window.location.href = urlAbsoluta() + "/home";
-						}, 3);
+						window.location.href = urlAbsoluta() + "/home";
 					}
 				}
 			});
