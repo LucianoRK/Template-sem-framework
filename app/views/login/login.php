@@ -112,7 +112,7 @@
 						title: erros['erros'],
 						showConfirmButton: false,
 						timer: 3500
-					})
+					});
 				} else {
 					window.location.href = urlAbsoluta() + "/home";
 				}

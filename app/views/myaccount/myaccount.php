@@ -35,15 +35,15 @@
 
                             <div class="tab-pane fade" id="v-pills-payment" role="tabpanel" aria-labelledby="v-pills-payment-tab">
                                 <h4 class="card-heading p-b-20">Alterar senha </h4>
-                                <form action="<?php echo CONFIG::getBaseUrl(); ?>/alterar/minha/senha" method="POST">
+                                <form>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Nova senha </label>
-                                        <input type="password" class="form-control" name="nova_senha" id="exampleInputPassword1" autocomplete="password" aria-describedby="passwordHelp" placeholder="Nova senha">
+                                        <label for="exampleInputPassword1">*Nova senha </label>
+                                        <input type="password" class="form-control nova_senha" name="nova_senha" placeholder="A senha deve conter no mínimo 8 caracteres com letras e números">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Repita a nova senha </label>
-                                        <input type="password" class="form-control" name="nova_senha_rep" id="exampleInputPassword1" autocomplete="password" aria-describedby="passwordHelp" placeholder="Nova senha">
+                                        <label for="exampleInputPassword1">*Repita a nova senha </label>
+                                        <input type="password" class="form-control nova_senha_rep" name="nova_senha_rep" placeholder="A senha deve conter no mínimo 8 caracteres com letras e números">
                                     </div>
                                 </form>
                                 <button class="btn btn-primary" id="salvar"> Salvar </button>
@@ -57,35 +57,36 @@
 </div>
 
 <script>
-    function alterarSenha()
-    {
+    function alterarSenha() {
         $('#salvar').on('click', function() {
             let dados = $("form").serialize();
             desativaBotao('#salvar');
 
-			$.ajax({
-				type: "post",
-				url: urlAbsoluta() + "/entrando/sistema",
-				data: dados,
-				success: function(response) {
-					if (response) {
-						swal({
-							type: 'error',
-							title: response,
-							showConfirmButton: false,
-							timer: 3500
-						})
-					} else {
-						swal({
-							type: 'success',
-							title: 'Senha alterada com sucesso !',
-							showConfirmButton: false,
-							timer: 1500
-						})
-					}
-				}
-			});
-		});
+            $.post(urlAbsoluta() + "/alterar/minha/senha", {
+                dados: dados
+            }, function(data) {
+                let erros = JSON.parse(data);
+
+                if (erros['erros']) {
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: erros['erros'],
+                        footer: '',
+                    })
+                } else {
+                    swal({
+                        type: 'success',
+                        title: 'Senha alterada com sucesso!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    $(".nova_senha").val("");
+                    $(".nova_senha_rep").val("");
+                }
+                ativarBotao('#salvar');
+            });
+        });
     }
 
     $(document).ready(function() {
