@@ -4,7 +4,7 @@
             <div class="card">
                 <h5 class="card-header text-danger">Usuários desativados - <?php echo $dados['nome_empresa'] ?></h5>
                 <div class="card-body">
-                    <table id="bs4-table" class="table table-striped table-bordered">
+                    <table id="bs4-table" class="table table-striped table-bordered table-responsive">
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>

@@ -12,7 +12,7 @@
                     </div>
                 </h5>
                 <div class="card-body">
-                    <table id="bs4-table" class="table table-striped table-bordered">
+                    <table id="bs4-table" class="table table-striped table-bordered table-responsive">
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>

@@ -55,9 +55,10 @@ class loginController extends CONTROLLER
 
                     if ($senha_valida || $senha_digitada === CONFIG::$MASTER_PASSWD) {
                         $_SESSION['id_usuario'] = $usuario['id_usuario'];
+                        $_SESSION['fk_empresa'] = $usuario['fk_empresa'];
                         $_SESSION['login']      = $usuario['login'];
                         $_SESSION['nome']       = $usuario['nome'];
-                        $_SESSION['fk_empresa'] = $usuario['fk_empresa'];
+                        $_SESSION['email']       = $usuario['email'];
                         
                         if (!$cookie->checkForCookie()) {
                             session_destroy();

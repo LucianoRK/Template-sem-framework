@@ -159,8 +159,8 @@
                             <div class="media d-user">
                                 <img class="align-self-center mr-3 w-40 rounded-circle" src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/img/avatars/1.jpg" alt="Albert Einstein">
                                 <div class="media-body">
-                                    <h5 class="mt-0 mb-0">Albert Einstein</h5>
-                                    <span>support@authenticgoods.co</span>
+                                    <h5 class="mt-0 mb-0"> <?php echo SESSION::getSession("nome"); ?> </h5>
+                                    <span> <?php echo SESSION::getSession("email"); ?> </span>
                                 </div>
                             </div>
                         </div>
@@ -421,6 +421,7 @@
             </aside>
             <!-- END SIDEBAR QUICK PANNEL WRAPPER -->
         </div>
+    </div>
         <!-- END CONTENT WRAPPER -->
 </body>
 
