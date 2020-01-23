@@ -12,36 +12,38 @@
                     </div>
                 </h5>
                 <div class="card-body">
-                    <table id="bs4-table" class="table table-striped table-bordered table-responsive">
-                        <thead>
-                            <tr>
-                                <th class="text-center">#</th>
-                                <th class="text-center">Nome</th>
-                                <th class="text-center">Tipo de Usuário</th>
-                                <th class="text-center">Acessos disponivéis (usados)</th>
-                                <th class="text-center">opções</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($dados['user_ativos'] as $usuario) { ?>
-                                <?php $dados['count']++ ?>
+                    <div class="table-responsive">
+                        <table id="bs4-table" class="table table-striped table-bordered">
+                            <thead>
                                 <tr>
-                                    <td class="text-center"><?php echo $dados['count'] ?></td>
-                                    <td><?php echo $usuario['nome'] ?></td>
-                                    <td><?php echo $usuario['tipo_nome'] ?></td>
-                                    <td class="text-center"><?php echo $usuario['quantidade_acesso'] ?></td>
-                                    <td class="text-center">
-                                        <button class="btn btn-info btn-rounded editar_user" title="Editar Usuário" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
-                                            Editar
-                                        </button>
-                                        <button class="btn btn-danger btn-rounded excluir_user" title="Deletar Usuário" id_usuario_excluir="<?php echo $usuario['id_usuario'] ?>">
-                                            Desativar
-                                        </button>
-                                    </td>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Nome</th>
+                                    <th class="text-center">Tipo de Usuário</th>
+                                    <th class="text-center">Acessos disponivéis (usados)</th>
+                                    <th class="text-center">opções</th>
                                 </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($dados['user_ativos'] as $usuario) { ?>
+                                    <?php $dados['count']++ ?>
+                                    <tr>
+                                        <td class="text-center"><?php echo $dados['count'] ?></td>
+                                        <td><?php echo $usuario['nome'] ?></td>
+                                        <td><?php echo $usuario['tipo_nome'] ?></td>
+                                        <td class="text-center"><?php echo $usuario['quantidade_acesso'] ?></td>
+                                        <td class="text-center">
+                                            <button class="btn btn-info btn-rounded editar_user" title="Editar Usuário" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
+                                                Editar
+                                            </button>
+                                            <button class="btn btn-danger btn-rounded excluir_user" title="Deletar Usuário" id_usuario_excluir="<?php echo $usuario['id_usuario'] ?>">
+                                                Desativar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
