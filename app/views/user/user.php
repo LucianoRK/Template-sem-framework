@@ -48,7 +48,7 @@
 
         function newUser() {
             $("#usuarios_desativados").html('');
-            $("#usuarios_ativos").load(urlAtual() + "/usuarios/newUser", function() {
+            $("#usuarios_ativos").load(urlAtual() + "/newUser", function() {
                 ativarBotao('#novo_usuario_btn');
             });
         }
