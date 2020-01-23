@@ -59,7 +59,7 @@
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3">Estado</label>
                             <div class="col-md-3">
-                                <select class="form-control estados" id="s2_demo1">
+                                <select class="form-control estados selectUm">
                                     <option disabled selected value=""> Selecione... </option>
                                     <?php foreach ($dados['estados'] as $estado) { ?>
                                         <option value="<?php echo $estado['id_estado']; ?>"> <?php echo $estado['nome']; ?> </option>
@@ -133,7 +133,7 @@
     }
 
     $(document).ready(function() {
-        select2OpcaoUm();
+        selectOne();
         buscar_cidades();
 
         $('#novo_usuario_gravar').on('click', function() {

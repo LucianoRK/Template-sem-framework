@@ -16,11 +16,12 @@
                         <div class="form-group row">
                             <label class="control-label text-right col-md-3"></label>
                             <div class="col-md-6">
-                                <select class="form-control m-b-15" id="select_form_company">
+                                <select class="form-control m-b-15 selectUm" id="select_form_company">
                                     <?php foreach ($dados['company'] as $empresa) { ?>
                                         <option value="<?php echo $empresa['id_empresa']; ?>"><?php echo $empresa['nome']; ?></option>
                                     <?php } ?>
                                 </select>
+                                <hr>
                                 <button class="btn btn-primary btn-block" id="buscar_dados">Buscar</button>
                             </div>
                         </div>
@@ -54,6 +55,8 @@
         }
 
         $(document).ready(function() {
+            selectOne();
+
             $('#buscar_dados').on('click', function() {
                 let select_form_company = $("#select_form_company").val();
                 desativaBotao('#buscar_dados');

@@ -18,8 +18,8 @@ function urlAbsoluta() {
     return "http://localhost/raiz";
 }
 
-function select2OpcaoUm() {
-    $("#s2_demo1").select2();
+function selectOne() {
+    $(".selectUm").select2();
 }
 
 
