@@ -102,22 +102,19 @@
 			let dados = $("form").serialize();
 			desativaBotao('#logar');
 
-			$.ajax({
-				type: "post",
-				url: urlAbsoluta() + "/entrando/sistema",
-				data: dados,
-				success: function(response) {
-					if (response) {
-						ativarBotao('#logar');
-						swal({
-							type: 'error',
-							title: response,
-							showConfirmButton: false,
-							timer: 3500
-						})
-					} else {
-						window.location.href = urlAbsoluta() + "/home";
-					}
+			$.post(urlAbsoluta() + "/entrando/sistema", {dados: dados}, function(data) {
+				let erros = JSON.parse(data);
+				
+				if (erros['erros']) {
+					ativarBotao('#logar');
+					swal({
+						type: 'error',
+						title: erros['erros'],
+						showConfirmButton: false,
+						timer: 3500
+					})
+				} else {
+					window.location.href = urlAbsoluta() + "/home";
 				}
 			});
 		});

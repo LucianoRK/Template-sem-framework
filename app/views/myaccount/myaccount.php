@@ -13,48 +13,24 @@
                     <div class="col-md-12 col-lg-9">
                         <div class="tab-content" id="my-account-tabsContent">
 
-                            <?php if (isset($success) && !empty($success)) { ?>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <strong>Sucesso!</strong> <?php echo $success; ?>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true" class="la la-close"></span>
-                                    </button>
-                                </div>
-                            <?php } else {
-                                $success = "";
-                            } ?>
-
-                            <?php if (isset($error) && !empty($error)) { ?>
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <strong>Atenção !</strong> <?php echo $error; ?>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true" class="la la-close"></span>
-                                    </button>
-                                </div>
-                            <?php } else {
-                                $error = "";
-                            } ?>
-
                             <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                 <h4 class="card-heading p-b-20">Minha conta</h4>
-                                <form>
-                                    <div class="form-group">
-                                        <label for="inputName">Nome</label>
-                                        <input type="text" class="form-control" id="inputName" value="<?php echo $nome ?>" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">E-mail</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" value="<?php echo $email ?>" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Usuario</label>
-                                        <input type="text" class="form-control" id="inputName" value="<?php echo $login ?>" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputText">Data de cadastro</label>
-                                        <input type="text" class="form-control" id="inputText" value="<?php echo $data_registro ?>" disabled>
-                                    </div>
-                                </form>
+                                <div class="form-group">
+                                    <label for="inputName">Nome</label>
+                                    <input type="text" class="form-control" id="inputName" value="<?php echo $nome ?>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">E-mail</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" value="<?php echo $email ?>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Usuario</label>
+                                    <input type="text" class="form-control" id="inputName" value="<?php echo $login ?>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputText">Data de cadastro</label>
+                                    <input type="text" class="form-control" id="inputText" value="<?php echo $data_registro ?>" disabled>
+                                </div>
                             </div>
 
                             <div class="tab-pane fade" id="v-pills-payment" role="tabpanel" aria-labelledby="v-pills-payment-tab">
@@ -69,8 +45,8 @@
                                         <label for="exampleInputPassword1">Repita a nova senha </label>
                                         <input type="password" class="form-control" name="nova_senha_rep" id="exampleInputPassword1" autocomplete="password" aria-describedby="passwordHelp" placeholder="Nova senha">
                                     </div>
-                                    <button type="submit" class="btn btn-primary"> Salvar </button>
                                 </form>
+                                <button class="btn btn-primary" id="salvar"> Salvar </button>
                             </div>
                         </div>
                     </div>
@@ -81,16 +57,38 @@
 </div>
 
 <script>
+    function alterarSenha()
+    {
+        $('#salvar').on('click', function() {
+            let dados = $("form").serialize();
+            desativaBotao('#salvar');
+
+			$.ajax({
+				type: "post",
+				url: urlAbsoluta() + "/entrando/sistema",
+				data: dados,
+				success: function(response) {
+					if (response) {
+						swal({
+							type: 'error',
+							title: response,
+							showConfirmButton: false,
+							timer: 3500
+						})
+					} else {
+						swal({
+							type: 'success',
+							title: 'Senha alterada com sucesso !',
+							showConfirmButton: false,
+							timer: 1500
+						})
+					}
+				}
+			});
+		});
+    }
+
     $(document).ready(function() {
-        let success = '<?php echo $success; ?>';
-        let error   = '<?php echo $error; ?>';
-
-        if (success || error) {
-            $("#v-pills-profile-tab").removeClass("active");
-            $("#v-pills-profile").removeClass("show active");
-
-            $("#v-pills-payment-tab").addClass("active");
-            $("#v-pills-payment").addClass("show active");
-        }
+        alterarSenha();
     });
 </script>

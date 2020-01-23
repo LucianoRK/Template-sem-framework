@@ -26,4 +26,15 @@ class ARRAYS
         print_r($array);
         echo $die ? die() : "</pre>";
     }
+
+    static function unserializeForm($str) {
+        $return_data = array();
+        $strArray    = explode("&", $str);
+       
+        foreach ($strArray as $item) {
+            $array                  = explode("=", $item);
+            $return_data[$array[0]] = $array[1];
+        }
+         return $return_data;
+    }
 }

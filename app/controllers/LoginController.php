@@ -37,6 +37,7 @@ class loginController extends CONTROLLER
     public function logInto()
     {
         $dados          = array();
+        $_POST          = ARRAYS::unserializeForm($_POST['dados']);
         $login_digitado = VALIDATION::post('login');
         $senha_digitada = VALIDATION::post('senha');
         $recaptcha      = VALIDATION::post('g-recaptcha-response');
@@ -57,27 +58,24 @@ class loginController extends CONTROLLER
                         $_SESSION['login']      = $usuario['login'];
                         $_SESSION['nome']       = $usuario['nome'];
                         $_SESSION['fk_empresa'] = $usuario['fk_empresa'];
-
+                        
                         if (!$cookie->checkForCookie()) {
                             session_destroy();
-                            echo "Usuário sem acesso ao sistema, solicite acesso ao administrador";
-                            die();
+                            $dados['erros'] = "Usuário sem acesso ao sistema, solicite acesso ao administrador";
                         }
                     } else {
-                        echo "O login ou a senha que você inseriu não é válido";
-                        die();
+                        $dados['erros'] = "O login ou a senha que você inseriu não é válido";
                     }
                 } else {
-                    echo"O login ou a senha que você inseriu não é válido";
-                    die();
+                    $dados['erros'] = "O login ou a senha que você inseriu não é válido";
                 }
             } else {
-                echo "O login ou a senha que você inseriu não é válido";
-                die();
+                $dados['erros'] = "O login ou a senha que você inseriu não é válido";
             }
         } else {
-            echo "reCAPTCHA inválido!";
-            die();
+            $dados['erros'] = "reCAPTCHA inválido!";
         }
+
+        echo json_encode($dados);
     }
 }
