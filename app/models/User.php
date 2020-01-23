@@ -38,7 +38,7 @@ class User
             FROM 
                 tb_usuarios
             WHERE TRUE
-                AND login = '{$login}' OR email = '{$login}'
+                AND login = '{$login}'
                 AND ativo = 1
         ";
 
