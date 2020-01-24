@@ -24,6 +24,8 @@ if (SESSION::checkLoggedInUser()) {
         $routes['/usuarios/deleteUser']          = '/user/deleteUser';
         $routes['/usuarios/reactivateUser']      = '/user/reactivateUser';
         $routes['/usuarios/buscar/cidades']      = '/user/showCities';
+        $routes['/usuarios/adicionarAcesso']     = '/user/moreAccess';
+        $routes['/usuarios/removerTodosAcessos'] = '/user/removeAllAccess';
     }
 
     /* PERMISSION */ {

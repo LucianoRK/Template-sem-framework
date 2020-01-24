@@ -162,8 +162,11 @@ class userController extends CONTROLLER
     
     function deleteUser()
     {
-        $user = new User;
-        $user->deleteUser(VALIDATION::post('id_usuario_excluir'));
+        $id_user = VALIDATION::post('id_usuario_excluir');
+        $user    = new User;
+        $user->deleteUser($id_user);
+        $user->removeAllAccess($id_user);
+        $user->deleteCookie($id_user);
     }
 
     function reactivateUser()
@@ -187,6 +190,32 @@ class userController extends CONTROLLER
             }
         } else {
             return false;
+        }   
+    }
+
+    function moreAccess()
+    {
+        $id_user      = VALIDATION::post('id_usuario');
+        $qtd_acesso   = VALIDATION::post('quantidade_acesso');
+        if($qtd_acesso <= 10 && $id_user){
+            $user = new User;
+            $user->updateAccess($id_user, $qtd_acesso);
+            return true;   
+        }else{
+            return false;   
+        }
+    }
+
+    function removeAllAccess()
+    {
+        $id_user = VALIDATION::post('id_usuario');
+        if($id_user){
+            $user    = new User;
+            $user->removeAllAccess($id_user);
+            $user->deleteCookie($id_user);
+            return true;   
+        }else{
+            return false;   
         }   
     }
 }

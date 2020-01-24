@@ -241,4 +241,44 @@ class User
 
         return $this->conn->fetch($q);
     }
+    
+    function updateAccess($id_user, $qtd_acesso)
+    {
+        $q = "
+            UPDATE 
+                tb_usuarios 
+            SET
+                quantidade_acesso = '{$qtd_acesso}'
+            WHERE 
+                id_usuario = '{$id_user}'
+        ";
+
+        return $this->conn->execute($q);
+    }
+
+    function removeAllAccess($id_user)
+    {
+        $q = "
+            UPDATE 
+                tb_usuarios 
+            SET
+                quantidade_acesso = 0
+            WHERE 
+                id_usuario = '{$id_user}'
+        ";
+
+        return $this->conn->execute($q);
+    }
+
+    function deleteCookie($id_user)
+    {
+        $q = "
+            DELETE FROM 
+                tb_login_cookies
+            WHERE 
+                fk_usuario = '{$id_user}'
+        ";
+
+        return $this->conn->execute($q);
+    }
 }
