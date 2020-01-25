@@ -31,46 +31,12 @@
                 <li><a href="apps.messages.html"><i class="icon dripicons-message"></i><span>Messages</span></a></li>
                 <li><a href="apps.contacts.html"><i class="icon dripicons-archive"></i><span>Contacts</span></a></li>
                 <li><a href="apps.calendar.html"><i class="icon dripicons-calendar"></i><span>Calendar</span></a></li>
-                <li class="sidebar-header"><span>EXTRAS</span></li>
-                <li class="nav-dropdown">
-                    <a class="has-arrow" href="#" aria-expanded="false"><i class="icon dripicons-lock"></i><span>Authentication</span></a>
-                    <ul class="collapse nav-sub" aria-expanded="false">
-                        <li><a href="auth.sign-in.html"><span>Sign In</span></a></li>
-                        <li><a href="auth.register.html"><span>Register</span></a></li>
-                        <li><a href="auth.forgot-password.html"><span>Forgot Password</span></a></li>
-                    </ul>
-                </li>
 
-                <li class="nav-dropdown">
-                    <a class="has-arrow" href="#" aria-expanded="false">
-                        <i class="icon dripicons-folder"></i><span>Menu Levels</span></a>
-                    <ul class="collapse nav-sub" aria-expanded="false">
-                        <li>
-                            <a href="javascript:;">
-                                Level 1.1
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                Level 1.2
-                            </a>
-                        </li>
-                        <li class="nav-dropdown">
-                            <a class="has-arrow" href="#" aria-expanded="false">
-                                Level 1.3
-                            </a>
-                            <ul class="collapse nav-sub" aria-expanded="false">
-                                <li>
-                                    <a href="javascript:;">
-                                        Level 2.1
-                                    </a>
-                                </li>
-                        </li>
-                    </ul>
+
+                <li class="sidebar-header"><span>SUPORTE</span></li>
+                <li>
+                    <a href="<?php echo CONFIG::getBaseUrl(); ?>/chamados"><i class="icon dripicons-help"></i><span> Chamados </span></a>
                 </li>
-            </ul>
-            </li>
-            <li><a href="helper-classes.html"><i class="icon dripicons-help"></i><span>Helper Classes</span></a></li>
             </ul>
     </div>
 </aside>
