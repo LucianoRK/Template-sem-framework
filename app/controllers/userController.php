@@ -184,7 +184,7 @@ class userController extends CONTROLLER
             $dados['cidades'] = $cidade->getAllCitiesByState($id_estado);
     
             if ($dados['cidades']) {
-                $this->loadView('endereco/cities', $dados);
+                $this->loadView('address/cities', $dados);
             } else {
                 return false;
             }

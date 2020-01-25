@@ -34,9 +34,9 @@
                                             <div class="form-group col-md-6 text-right quantidade_acesso">
                                                 <?php echo $usuario['quantidade_acesso'] ?>
                                             </div>
-                                            <div class="form-group col-md-6 text-right">
-                                                <i id_user="<?php echo $usuario['id_usuario'] ?>" class="zmdi zmdi-plus-circle zmdi-hc-fw zmdi-hc-2x text-success adicionar_acesso" title="Adcionar acesso"></i>
-                                                <i id_user="<?php echo $usuario['id_usuario'] ?>" class="zmdi zmdi-minus-circle zmdi-hc-fw zmdi-hc-2x text-danger remover_acesso" title="Remover todos os acessos"></i>
+                                            <div class="form-group col-md-6 text-right btn">
+                                                <i id_user="<?php echo $usuario['id_usuario'] ?>" class="zmdi zmdi-plus-circle-o zmdi-hc-fw zmdi-hc-2x text-success adicionar_acesso" title="Adcionar"></i>     
+                                                <i id_user="<?php echo $usuario['id_usuario'] ?>" class="zmdi zmdi-refresh-alt zmdi-hc-fw zmdi-hc-2x text-danger remover_acesso" title="Resetar"></i>
                                             </div>
                                         </div>
                                     </td>
