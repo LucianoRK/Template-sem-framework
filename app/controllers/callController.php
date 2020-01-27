@@ -30,4 +30,39 @@ class callController extends CONTROLLER
 
         $this->loadView('call/newCallLoad', $dados);
     }
+
+    function saveCall() 
+    {
+        $erros          = array();
+        $retorno        = array();
+        $_POST          = ARRAYS::unserializeForm($_POST['dados']);
+        $fk_empresa     = VALIDATION::post('empresa');
+        $fk_categoria   = VALIDATION::post('empresa');
+        $descricao      = VALIDATION::post('descricao');
+
+
+        if (!$fk_empresa) {
+            $erros['campos']    = "empresa";
+            $erros['msgs']      = "Por favor, selecione uma empresa";
+            $retorno[]          = $erros;
+        }
+
+        if (!$fk_categoria) {
+            $erros['campos']    = "categoria";
+            $erros['msgs']      = "Por favor, selecione uma categoria";
+            $retorno[]          = $erros;
+        }
+
+        if (!$descricao) {
+            $erros['campos']    = "descricao";
+            $erros['msgs']      = "Por favor, descreva o problema ou a dúvida";
+            $retorno[] = $erros;
+        } else if (strlen($descricao) <= 20) {
+            $erros['campos']    = "descricao";
+            $erros['msgs']      = "Por favor, o campo descrição deve conter ao menos 20 carácter";
+            $retorno[]    = $erros;
+        }
+
+        echo json_encode($retorno);
+    }
 }

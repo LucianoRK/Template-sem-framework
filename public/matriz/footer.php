@@ -21,6 +21,7 @@
 <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/flot.curvedlines/curvedLines.js"></script>
 <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/datatables.net/js/jquery.dataTables.js"></script>
 <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
 <!-- ================== GLOBAL APP SCRIPTS ==================-->
 <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/global/app.js"></script>

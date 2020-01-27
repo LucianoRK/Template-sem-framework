@@ -32,9 +32,10 @@ if (SESSION::checkLoggedInUser()) {
         $routes['/permissoes'] = '/permission/index';
     }
 
-    /* CHAMADOS */ {
-        $routes['/chamados']             = '/call/index';
-        $routes['/chamados/novoChamado'] = '/call/newCall';
+    /* CALLS */ {
+        $routes['/chamados']                = '/call/index';
+        $routes['/chamados/novoChamado']    = '/call/newCall';
+        $routes['/chamados/salvarChamado']  = '/call/saveCall';
     }
 }
 
