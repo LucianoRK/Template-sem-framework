@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/css/icons/material-design-iconic-font.min.css">
 
     <!-- ======================= PAGE LEVEL VENDOR STYLES ========================-->
-	<link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/select2/select2.min.css">
+    <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/select2/select2.min.css">
 
     <!-- ======================= PAGE VENDOR STYLES ===========================-->
     <link rel="stylesheet" href="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
@@ -422,7 +422,7 @@
             <!-- END SIDEBAR QUICK PANNEL WRAPPER -->
         </div>
     </div>
-        <!-- END CONTENT WRAPPER -->
+    <!-- END CONTENT WRAPPER -->
 </body>
 
 </html>

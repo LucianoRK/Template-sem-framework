@@ -6,6 +6,7 @@ class userController extends CONTROLLER
     {
         $company = new Company;
         $dados['company'] = $company->getAllCompanyByUser(SESSION::getSession('id_usuario'));
+
         if (!$dados['company']) {
             $dados['company'] = $company->getInfoCompany(SESSION::getSession('fk_empresa'));
         }
@@ -32,6 +33,7 @@ class userController extends CONTROLLER
     {
         $user = new User;
         $dados['user_desativados'] = $user->getAllUserCompany(VALIDATION::post('company'), 0);
+
         if ($dados['user_desativados']) {
             $company = new Company;
             $dados['nome_empresa'] = $company->getNameCompany(VALIDATION::post('company'));
@@ -50,6 +52,7 @@ class userController extends CONTROLLER
         $estado  = new Estado;
 
         $dados['company'] = $company->getAllCompanyByUser(SESSION::getSession('id_usuario'));
+
         if (!$dados['company']) {
             $dados['company'] = $company->getInfoCompany(SESSION::getSession('fk_empresa'));
         }
@@ -61,67 +64,123 @@ class userController extends CONTROLLER
 
     function saveUser()
     {
-        $erros = array();
-        $user = new User;
+        $erros      = array();
+        $retorno    = array();
+        $_POST      = ARRAYS::unserializeForm($_POST['dados']);
+        $user       = new User;
 
-        /*Dados gerais */
-        $id_user      = VALIDATION::post('id_user');
-        $empresa      = VALIDATION::post('empresa');
-        $tipo_usuario = VALIDATION::post('tipo_usuario');
-        /*Dados Pessoais */
-        $nome            = VALIDATION::post('nome');
-        $cpf             = VALIDATION::post('cpf');
-        $email           = VALIDATION::post('email');
-        $data_nascimento = VALIDATION::post('data_nascimento');
-        /*Dados residenciais */
-        $cidade      = VALIDATION::post('cidade');
-        $estado      = VALIDATION::post('estado');
-        $rua         = VALIDATION::post('rua');
-        $numero_casa = VALIDATION::post('numero_casa');
-        /*Dados usuario */
-        $login     = VALIDATION::post('login');
-        $senha     = VALIDATION::post('senha');
-        $senha_rep = VALIDATION::post('senha_rep');
+        /* Tiro a mask da string */
+        STRINGS::clearMask($_POST['cpf']);
+        STRINGS::clearMask($_POST['cep']);
+
+        /* Dados gerais */
+        $id_user            = VALIDATION::post('id_user');
+        $empresa            = VALIDATION::post('empresa');
+        $tipo_usuario       = VALIDATION::post('tipo_usuario');
+
+        /* Dados Pessoais */
+        $nome               = VALIDATION::post('nome');
+        $cpf                = VALIDATION::post('cpf');
+        $email              = VALIDATION::post('email');
+        $data_nascimento    = VALIDATION::post('data_nascimento');
+
+        /* Dados residenciais */
+        $cep                = VALIDATION::post('cep');
+        $estado             = VALIDATION::post('estado');
+        $cidade             = VALIDATION::post('cidade');
+        $rua                = VALIDATION::post('rua');
+        $numero_casa        = VALIDATION::post('numero_casa');
+
+        /* Dados usuario */
+        $login              = VALIDATION::post('login');
+        $senha              = VALIDATION::post('senha');
+        $senha_rep          = VALIDATION::post('senha_rep');
 
         if (!is_numeric($empresa)) {
-            array_push($erros, 'empresa');
+            $erros['campos']    = "empresa";
+            $erros['msgs']      = "Por favor, selecione a empresa";
+            $retorno[]          = $erros;
         }
+
         if (!is_numeric($tipo_usuario)) {
-            array_push($erros, 'tipo_usuario');
+            $erros['campos']    = "tipo_usuario";
+            $erros['msgs']      = "Por favor, selecione tipo do usuário";
+            $retorno[]          = $erros;
         }
+
         if (empty($nome) || strlen($nome) < 2) {
-            array_push($erros, 'nome');
+            $erros['campos']    = "nome";
+            $erros['msgs']      = "Por favor, preencha o campo nome corretamente";
+            $retorno[]          = $erros;
         }
+
         if (!VALIDATION::cpfvalidation($cpf)) {
-            array_push($erros, 'cpf');
+            $erros['campos']    = "cpf";
+            $erros['msgs']      = "Por favor, insira um cpf valido";
+            $retorno[]          = $erros;
         }
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            array_push($erros, 'email');
+
+        if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $erros['campos']    = "email";
+            $erros['msgs']      = "Por favor, preencha o campo email corretamente";
+            $retorno[]          = $erros;
         }
-        if (!DATE::dateToMysql($data_nascimento) && !empty($data_nascimento) && $id_user) {
-            array_push($erros, 'data_nascimento');
+
+        if (empty($data_nascimento)) {
+            $erros['campos']    = "data_nascimento";
+            $erros['msgs']      = "Por favor, preencha o campo data de nascimento corretamente";
+            $retorno[]          = $erros;
         }
+
+        if ($estado && !is_numeric($estado)) {
+            $erros['campos']    = "estado";
+            $erros['msgs']      = "Por favor, selecione um estado";
+            $retorno[]          = $erros;
+        }
+
+        if (isset($estado) && !is_numeric($cidade)) {
+            $erros['campos']    = "cidade";
+            $erros['msgs']      = "Por favor, selecione uma cidade";
+            $retorno[]          = $erros;
+        }
+
         if (strlen($login) < 5) {
-            array_push($erros, 'login');
+            $erros['campos']    = "login";
+            $erros['msgs']      = "Por favor, o campo login deve conter ao menor seis caracter";
+            $retorno[]          = $erros;
         }
+
         /* Verifico se o login ja existe */
-        if($user->getUserByLogin($login, $id_user)){
-            array_push($erros, 'login');
-            array_push($erros, 'login_repetido');
+        if ($user->getUserByLogin($login, $id_user)) {
+            $erros['campos']    = "login";
+            $erros['msgs']      = "O login inserido já existe";
+            $retorno[]          = $erros;
         }
+
         if (strlen($senha) < 7 || !VALIDATION::lettersNumber($senha)) {
-            array_push($erros, 'senha');
+            $erros['campos']    = "senha";
+            $erros['msgs']      = "Por favor, a senha deve conter ao menos oito caracter sendo letras e números";
+            $retorno[]          = $erros;
         }
+
         if (strlen($senha_rep) < 7 || !VALIDATION::lettersNumber($senha)) {
-            array_push($erros, 'senha_rep');
+            $erros['campos']    = "senha_rep";
+            $erros['msgs']      = "Por favor, a senha deve conter ao menos oito caracter sendo letras e números";
+            $retorno[]          = $erros;
         }
+
         if ($senha != $senha_rep) {
-            array_push($erros, 'senha');
-            array_push($erros, 'senha');
+            $erros['campos']    = "senha";
+            $erros['msgs']      = "As senhas não conferem";
+            $retorno[]          = $erros;
+
+            $erros['campos']    = "senha_rep";
+            $erros['msgs']      = "As senhas não conferem";
+            $retorno[]          = $erros;
         }
-        
-        if ($erros == 0 || $erros == null) {
-            if($id_user){
+
+        if ($retorno == 0 || $retorno == null) {
+            if ($id_user) {
                 $user->updateUser(
                     $id_user,
                     $empresa,
@@ -133,7 +192,7 @@ class userController extends CONTROLLER
                     $login,
                     SAFETY::password_hash($senha)
                 );
-            }else{
+            } else {
                 $user->recordNewUser(
                     $empresa,
                     $tipo_usuario,
@@ -149,7 +208,7 @@ class userController extends CONTROLLER
             //LOG::writeLog(SESSION::getSession('id_usuario'), 1, $log);
         }
 
-        echo json_encode($erros);
+        echo json_encode($retorno);
     }
 
     function editUser()
@@ -159,7 +218,7 @@ class userController extends CONTROLLER
         $dados['user'] = $user->getInfoUser($id_user);
         $this->loadView('user/editUserLoad', $dados);
     }
-    
+
     function deleteUser()
     {
         $id_user = VALIDATION::post('id_usuario_excluir');
@@ -182,7 +241,7 @@ class userController extends CONTROLLER
         if ($id_estado) {
             $cidade           = new Cidade;
             $dados['cidades'] = $cidade->getAllCitiesByState($id_estado);
-    
+
             if ($dados['cidades']) {
                 $this->loadView('address/cities', $dados);
             } else {
@@ -190,32 +249,32 @@ class userController extends CONTROLLER
             }
         } else {
             return false;
-        }   
+        }
     }
 
     function moreAccess()
     {
         $id_user      = VALIDATION::post('id_usuario');
         $qtd_acesso   = VALIDATION::post('quantidade_acesso');
-        if($qtd_acesso <= 10 && $id_user){
+        if ($qtd_acesso <= 10 && $id_user) {
             $user = new User;
             $user->updateAccess($id_user, $qtd_acesso);
-            return true;   
-        }else{
-            return false;   
+            return true;
+        } else {
+            return false;
         }
     }
 
     function removeAllAccess()
     {
         $id_user = VALIDATION::post('id_usuario');
-        if($id_user){
+        if ($id_user) {
             $user    = new User;
             $user->removeAllAccess($id_user);
             $user->deleteCookie($id_user);
-            return true;   
-        }else{
-            return false;   
-        }   
+            return true;
+        } else {
+            return false;
+        }
     }
 }

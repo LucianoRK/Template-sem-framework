@@ -60,21 +60,24 @@
 
 <script>
     function saveNewChamado() {
-        $("#salvar_chamado").on("click", function () {
+        $("#salvar_chamado").on("click", function() {
             desativaBotao('#salvar_chamado');
             let dados = $("form").serialize();
 
-            $.post(urlAtual() + "/salvarChamado",{dados: dados}, function(data) {
+            $.post(urlAtual() + "/salvarChamado", {
+                dados: dados
+            }, function(data) {
                 let erros = JSON.parse(data);
+                
                 ativarBotao('#salvar_chamado');
                 $("*").removeClass("has-error");
                 $(".msg").empty();
-                
+
                 if (erros.length > 0) {
                     $.each(erros, function(indice, value) {
-                        let campoMsg = value['campos']+'Msg';
-                        let msg      = value['msgs'];
-                        let campo    = "<label id='campoMsg' class='control-label text-right msg'> "+msg+" </label>"
+                        let campoMsg = value['campos'] + 'Msg';
+                        let msg = value['msgs'];
+                        let campo = "<label id='campoMsg' class='control-label text-right msg'> " + msg + " </label>"
 
                         $("#" + value['campos']).parents(".form-group").addClass("has-error");
                         $("#" + value['campos']).parent().append(campo);

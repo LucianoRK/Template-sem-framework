@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ALL);
 session_start();
 set_time_limit(60);
 spl_autoload_register("autoload");

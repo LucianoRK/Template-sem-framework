@@ -33,7 +33,7 @@ class ARRAYS
        
         foreach ($strArray as $item) {
             $array                  = explode("=", $item);
-            $return_data[$array[0]] = $array[1];
+            $return_data[$array[0]] = urldecode($array[1]);
         }
          return $return_data;
     }

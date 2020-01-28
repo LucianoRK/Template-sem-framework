@@ -32,7 +32,7 @@
 
 <!-- ================== PAGE LEVEL APP SCRIPTS ==================-->
 <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/components/select2-init.js"></script>
-        
+
 <!-- ================== PAGE LEVEL SCRIPTS ==================-->
 <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/components/countUp-init.js"></script>
 <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/cards/counter-group.js"></script>
@@ -41,3 +41,8 @@
 <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/cards/users-chart.js"></script>
 <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/cards/bounce-rate-chart.js"></script>
 <script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/cards/session-duration-chart.js"></script>
+
+<!-- ================== MASK ==================-->
+<script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/vendor/jquery-mask/jquery.mask.min.js"></script>
+<script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/components/jquery-mask-init.js"></script>
+<script src="<?php echo CONFIG::getBaseUrl(); ?>/public/assets/js/myMasks.js"></script>

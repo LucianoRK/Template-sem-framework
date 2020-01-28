@@ -121,4 +121,14 @@ class STRINGS
         
         return $regex;
     }
+
+    static function clearMask(& $string)
+    {
+        $string = str_replace(".", "", $string);
+        $string = str_replace("-", "", $string);
+        $string = str_replace("_", "", $string);
+        $string = str_replace("/", "", $string);
+
+        return $string;
+    }
 }

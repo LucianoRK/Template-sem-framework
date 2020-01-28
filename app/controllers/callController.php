@@ -59,7 +59,7 @@ class callController extends CONTROLLER
             $retorno[] = $erros;
         } else if (strlen($descricao) <= 20) {
             $erros['campos']    = "descricao";
-            $erros['msgs']      = "Por favor, o campo descrição deve conter ao menos 20 carácter";
+            $erros['msgs']      = "Por favor, o campo descrição deve conter ao menos 20 caracter";
             $retorno[]    = $erros;
         }
 
