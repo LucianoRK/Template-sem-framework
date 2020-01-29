@@ -1,4 +1,4 @@
-<label class="control-label text-right col-md-3">Usuario</label>
+<label class="control-label text-right col-md-3">Usuário</label>
 <div class="col-md-6">
     <select id="user" name="user" class="form-control selectUm">
         <?php var_dump($dados); ?>

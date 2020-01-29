@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col">
         <div class="card">
-            <h5 class="card-header">PERMISSOES</h5>
+            <h5 class="card-header">PERMISSÕES</h5>
             <div class="card-body">
                 <form action="#" class="form-horizontal">
                     <div class="form-body">
