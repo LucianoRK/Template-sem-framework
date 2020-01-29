@@ -12,68 +12,63 @@
                     </div>
                 </h5>
                 <div class="card-body">
-                    <table id="bs4-table" class="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th class="text-center">#</th>
-                                <th class="text-center">Nome</th>
-                                <th class="text-center">Tipo</th>
-                                <th class="text-center">Acessos disponivéis</th>
-                                <th class="text-center">Opções</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($dados['user_ativos'] as $usuario) { ?>
-                                <?php
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Nome</th>
+                                    <th class="text-center">Tipo</th>
+                                    <th class="text-center">Acessos disponivéis</th>
+                                    <th class="text-center">Opções</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($dados['user_ativos'] as $usuario) { ?>
+                                    <?php
                                     $dados['count']++;
                                     $cookie         = new Cookie;
                                     $acessos_usados = $cookie->getCookieAmount($usuario['id_usuario'], $usuario['fk_empresa']);
-                                ?>
-                                <tr>
-                                    <td class="text-center">
-                                        <?php echo $dados['count'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $usuario['nome'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $usuario['tipo_nome'] ?>
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6 text-right quantidade_acesso">
-                                                <?php echo $usuario['quantidade_acesso']. " ($acessos_usados)"; ?>
-                                            </div>
-                                            <div class="btn">
-                                                <i id_user="<?php echo $usuario['id_usuario'] ?>" class="zmdi zmdi-plus-circle-o zmdi-hc-fw zmdi-hc-2x text-success adicionar_acesso" title="Adcionar"></i>
-                                                <i id_user="<?php echo $usuario['id_usuario'] ?>" class="zmdi zmdi-refresh-alt zmdi-hc-fw zmdi-hc-2x text-danger remover_acesso" title="Resetar"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <button class="btn btn-info btn-rounded btn-sm editar_user" title="Editar" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
-                                            <i class="la la-edit text-white font-size-22"></i>
-                                        </button>
-                                        <button class="btn btn-danger btn-rounded excluir_user btn-sm" title="Desativar" id_usuario_excluir="<?php echo $usuario['id_usuario'] ?>">
-                                            <i class="la la-trash text-white font-size-22 v-align-text-bottom"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                                    ?>
+                                    <tr>
+                                        <td class="text-center">
+                                            <?php echo $dados['count'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $usuario['nome'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $usuario['tipo_nome'] ?>
+                                        </td>
+                                        <td class="text-center btnAcessos">
+                                            <span class="quantidade_acesso">
+                                                <?php echo $usuario['quantidade_acesso']; ?>
+                                            </span>
+                                            <?php echo "(".$acessos_usados.")"; ?>
+                                            <span class="btn">
+                                                <i id_user="<?php echo $usuario['id_usuario'] ?>" class="la la-plus-circle font-size-22 text-success adicionar_acesso" title="Adcionar"></i>
+                                                <i id_user="<?php echo $usuario['id_usuario'] ?>" class="la la-refresh font-size-22 text-danger remover_acesso" title="Resetar"></i>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-info btn-rounded btn-sm editar_user" title="Editar" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
+                                                <i class="la la-edit text-white font-size-22"></i>
+                                            </button>
+                                            <button class="btn btn-danger btn-rounded excluir_user btn-sm" title="Desativar" id_usuario_excluir="<?php echo $usuario['id_usuario'] ?>">
+                                                <i class="la la-trash text-white font-size-22 v-align-text-bottom"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-<?php } else { ?>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <?php echo $dados['error']; ?>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true" class="la la-close"></span>
-        </button>
-    </div>
 <?php } ?>
+
 <script>
     function editUser(id_user) {
         $("#usuarios_desativados").html('');
@@ -98,9 +93,9 @@
         $(".adicionar_acesso").on("click", function() {
             desativaBotao(this);
             let id_usuario = $(this).attr("id_user");
-            let quantidade_acesso = parseInt($(this).parents(".form-row").find(".quantidade_acesso").html()) + 1;
+            let quantidade_acesso = parseInt($(this).parents(".btnAcessos").find(".quantidade_acesso").html()) + 1;
             if (quantidade_acesso <= 10) {
-                $(this).parents(".form-row").find(".quantidade_acesso").html(quantidade_acesso);
+                $(this).parents(".btnAcessos").find(".quantidade_acesso").html(quantidade_acesso);
                 $.post(urlAtual() + "/adicionarAcesso", {
                     id_usuario: id_usuario,
                     quantidade_acesso: quantidade_acesso
@@ -111,7 +106,7 @@
         $(".remover_acesso").on("click", function() {
             desativaBotao(this);
             let id_usuario = $(this).attr("id_user");
-            $(this).parents(".form-row").find(".quantidade_acesso").html('0');
+            $(this).parents(".btnAcessos").find(".quantidade_acesso").html('0');
             $.post(urlAtual() + "/removerTodosAcessos", {
                 id_usuario: id_usuario
             });
