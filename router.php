@@ -29,7 +29,9 @@ if (SESSION::checkLoggedInUser()) {
     }
 
     /* PERMISSION */ {
-        $routes['/permissoes'] = '/permission/index';
+        $routes['/permissoes']             = '/permission/index';
+        $routes['/permissoes/selectUsers'] = '/permission/selectUsers';
+        $routes['/permissoes/list']        = '/permission/listPermissionByUser';
     }
 
     /* CALLS */ {
