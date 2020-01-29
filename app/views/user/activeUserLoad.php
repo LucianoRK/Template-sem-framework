@@ -7,7 +7,7 @@
                 <h5 class="card-header text-success">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <span class="align-middle">Usuários ativos - <?php echo $dados['nome_empresa'] ?></span>
+                            <span class="align-middle">Usuários ativos - [ <?php echo $dados['nome_empresa'] ?> ]</span>
                         </div>
                     </div>
                 </h5>
@@ -17,35 +17,45 @@
                             <tr>
                                 <th class="text-center">#</th>
                                 <th class="text-center">Nome</th>
-                                <th class="text-center">Tipo de Usuário</th>
+                                <th class="text-center">Tipo</th>
                                 <th class="text-center">Acessos disponivéis</th>
                                 <th class="text-center">Opções</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($dados['user_ativos'] as $usuario) { ?>
-                                <?php $dados['count']++ ?>
+                                <?php
+                                    $dados['count']++;
+                                    $cookie         = new Cookie;
+                                    $acessos_usados = $cookie->getCookieAmount($usuario['id_usuario'], $usuario['fk_empresa']);
+                                ?>
                                 <tr>
-                                    <td class="text-center"><?php echo $dados['count'] ?></td>
-                                    <td><?php echo $usuario['nome'] ?></td>
-                                    <td><?php echo $usuario['tipo_nome'] ?></td>
+                                    <td class="text-center">
+                                        <?php echo $dados['count'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $usuario['nome'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $usuario['tipo_nome'] ?>
+                                    </td>
                                     <td class="text-center">
                                         <div class="form-row">
                                             <div class="form-group col-md-6 text-right quantidade_acesso">
-                                                <?php echo $usuario['quantidade_acesso'] ?>
+                                                <?php echo $usuario['quantidade_acesso']. " ($acessos_usados)"; ?>
                                             </div>
-                                            <div class="form-group col-md-6 text-right btn">
-                                                <i id_user="<?php echo $usuario['id_usuario'] ?>" class="zmdi zmdi-plus-circle-o zmdi-hc-fw zmdi-hc-2x text-success adicionar_acesso" title="Adcionar"></i>     
+                                            <div class="btn">
+                                                <i id_user="<?php echo $usuario['id_usuario'] ?>" class="zmdi zmdi-plus-circle-o zmdi-hc-fw zmdi-hc-2x text-success adicionar_acesso" title="Adcionar"></i>
                                                 <i id_user="<?php echo $usuario['id_usuario'] ?>" class="zmdi zmdi-refresh-alt zmdi-hc-fw zmdi-hc-2x text-danger remover_acesso" title="Resetar"></i>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="text-center">
-                                        <button class="btn btn-info btn-rounded editar_user" title="Editar Usuário" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
-                                            Editar
+                                        <button class="btn btn-info btn-rounded btn-sm editar_user" title="Editar" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
+                                            <i class="la la-edit text-white font-size-22"></i>
                                         </button>
-                                        <button class="btn btn-danger btn-rounded excluir_user" title="Deletar Usuário" id_usuario_excluir="<?php echo $usuario['id_usuario'] ?>">
-                                            Desativar
+                                        <button class="btn btn-danger btn-rounded excluir_user btn-sm" title="Desativar" id_usuario_excluir="<?php echo $usuario['id_usuario'] ?>">
+                                            <i class="la la-trash text-white font-size-22 v-align-text-bottom"></i>
                                         </button>
                                     </td>
                                 </tr>
@@ -96,7 +106,7 @@
                     quantidade_acesso: quantidade_acesso
                 });
             }
-            ativarBotao(this);         
+            ativarBotao(this);
         });
         $(".remover_acesso").on("click", function() {
             desativaBotao(this);
@@ -105,7 +115,7 @@
             $.post(urlAtual() + "/removerTodosAcessos", {
                 id_usuario: id_usuario
             });
-            ativarBotao(this); 
+            ativarBotao(this);
         });
         $(".editar_user").on("click", function() {
             let id_usuario_editar = $(this).attr("id_usuario_editar");

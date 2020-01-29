@@ -10,25 +10,37 @@
                                 <tr>
                                     <th class="text-center">#</th>
                                     <th class="text-center">Nome</th>
-                                    <th class="text-center">Tipo de Usuário</th>
-                                    <th class="text-center">Acessos disponivéis (usados)</th>
+                                    <th class="text-center">Tipo</th>
+                                    <th class="text-center">Acessos disponivéis</th>
                                     <th class="text-center">opções</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($dados['user_desativados'] as $usuario) { ?>
-                                    <?php $dados['count']++ ?>
+                                    <?php 
+                                        $dados['count']++;
+                                        $cookie         = new Cookie;
+                                        $acessos_usados = $cookie->getCookieAmount($usuario['id_usuario'], $usuario['fk_empresa']);
+                                    ?>
                                     <tr class="text-danger">
-                                        <td class="text-center"><?php echo $dados['count'] ?></td>
-                                        <td><?php echo $usuario['nome'] ?></td>
-                                        <td><?php echo $usuario['tipo_nome'] ?></td>
-                                        <td class="text-center"><?php echo $usuario['quantidade_acesso'] ?></td>
                                         <td class="text-center">
-                                            <button class="btn btn-info btn-rounded editar_user" title="Editar Usuário" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
-                                                Editar
+                                            <?php echo $dados['count'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $usuario['nome'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $usuario['tipo_nome'] ?>
+                                        </td>
+                                        <td class="text-center">
+                                            <?php echo $usuario['quantidade_acesso']. " ($acessos_usados)";?>
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-info btn-rounded btn-sm editar_user" title="Editar" id_usuario_editar="<?php echo $usuario['id_usuario'] ?>">
+                                                <i class="la la-edit text-white font-size-22"></i>
                                             </button>
-                                            <button class="btn btn-success btn-rounded reativar_user" title="Reativar Usuário" id_usuario_reativar="<?php echo $usuario['id_usuario'] ?>">
-                                                Ativar
+                                            <button class="btn btn-success btn-rounded btn-sm reativar_user" title="Reativar" id_usuario_reativar="<?php echo $usuario['id_usuario'] ?>">
+                                                <i class="la la-check-circle text-white font-size-22"></i>
                                             </button>
                                         </td>
                                     </tr>
