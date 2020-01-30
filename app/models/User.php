@@ -179,28 +179,16 @@ class User
     }
 
 
-    public function updateUser(
-        $id_user,
-        $fk_empresa,
-        $fk_tipo_usuario,
-        $nome,
-        $cpf,
-        $data_nascimento,
-        $email,
-        $login,
-        $senha
-    ) {
+    public function updateUser($id_user, $nome, $cpf, $data_nascimento, $email, $senha)
+    {
         $q = "
             UPDATE 
                 tb_usuarios 
             SET
-                fk_empresa      = '{$fk_empresa}',
-                fk_tipo_usuario = '{$fk_tipo_usuario}',
                 nome            = '{$nome}',
                 cpf             = '{$cpf}',
                 data_nascimento = '{$data_nascimento}',
                 email           = '{$email}', 
-                login           = '{$login}', 
                 senha           = '{$senha}' 
             WHERE 
                 id_usuario = '{$id_user}'
@@ -280,5 +268,19 @@ class User
         ";
 
         return $this->conn->execute($q);
+    }
+
+    function getPasswordUser($id_user)
+    {
+        $q = "
+            SELECT 
+                senha
+            FROM 
+                tb_usuarios
+            WHERE TRUE
+                AND id_usuario = '{$id_user}'
+        ";
+
+        return $this->conn->fetchAttr($q, "senha");
     }
 }

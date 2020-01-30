@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="control-label text-right col-md-3">Data de nascimento</label>
+                            <label class="control-label text-right col-md-3">*Data de nascimento</label>
                             <div class="col-md-6">
                                 <input id="data_nascimento" name="data_nascimento" type="date" class="form-control" placeholder="dd/mm/yyyy">
                             </div>
@@ -141,8 +141,7 @@
         </div>
     </div>
 </div>
-</section>
-</div>
+
 <script>
     function buscar_cidades() {
         $('#estado').on('change', function() {
@@ -191,7 +190,6 @@
             });
         });
     }
-
     
     function cancelNewUser() {
         $('#novo_usuario_cancelar').on('click', function() {
