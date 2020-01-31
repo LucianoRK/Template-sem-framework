@@ -141,7 +141,7 @@
 
     function salvarDadosEdicao() {
         $('#editar_usuario_gravar').on('click', function() {
-            //desativaBotao('#editar_usuario_gravar');
+            desativaBotao('#editar_usuario_gravar');
             let dados = $("form").serialize();
 
             $.post(urlAtual() + "/saveUserData", {
@@ -149,7 +149,7 @@
             }, function(data) {
                 let erros = JSON.parse(data);
 
-                //ativarBotao('#editar_usuario_gravar');
+                ativarBotao('#editar_usuario_gravar');
                 $("*").removeClass("has-error");
                 $(".msg").empty();
 
@@ -169,9 +169,7 @@
                         showConfirmButton: false,
                         timer: 1500
                     });
-
-                    // Carrega a div do formulario novamente
-                    $("#usuarios_ativos").load(urlAtual() + "/newUser");
+                    $("#buscar_dados").trigger("click");
                 }
             });
         });
@@ -179,7 +177,8 @@
 
     function cancelarEdicao() {
         $('#editar_usuario_cancelar').on('click', function() {
-            $("#usuarios_ativos").html('');
+            desativaBotao('#editar_usuario_cancelar');
+            $("#buscar_dados").trigger("click");
         });
     }
 

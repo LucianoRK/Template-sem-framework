@@ -16,7 +16,7 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th class="text-center">#</th>
+                                    <th class="text-center">#A</th>
                                     <th class="text-center">Nome</th>
                                     <th class="text-center">Tipo</th>
                                     <th class="text-center">Acessos disponivéis</th>
@@ -44,7 +44,7 @@
                                             <span class="quantidade_acesso">
                                                 <?php echo $usuario['quantidade_acesso']; ?>
                                             </span>
-                                            <?php echo "(".$acessos_usados.")"; ?>
+                                            <?php echo "(" . $acessos_usados . ")"; ?>
                                             <span class="btn">
                                                 <i id_user="<?php echo $usuario['id_usuario'] ?>" class="la la-plus-circle font-size-22 text-success adicionar_acesso" title="Adcionar"></i>
                                                 <i id_user="<?php echo $usuario['id_usuario'] ?>" class="la la-refresh font-size-22 text-danger remover_acesso" title="Resetar"></i>
@@ -71,7 +71,7 @@
 
 <script>
     function editUser(id_user) {
-        $("#usuarios_desativados").html('');
+        $("#usuarios_desativados").empty();
         $("#usuarios_ativos").load(urlAtual() + "/editUser", {
             id_user: id_user
         }, function() {
@@ -82,18 +82,40 @@
         $(".excluir_user").on("click", function() {
             desativaBotao(this);
             let id_usuario_excluir = $(this).attr("id_usuario_excluir");
-            $.post(urlAtual() + "/deleteUser", {
-                id_usuario_excluir: id_usuario_excluir
-            }, function(data) {
-                let select_form_company = $("#select_form_company").val();
-                loadListUser(select_form_company);
-                ativarBotao(this);
-            });
+
+            swal({
+                title: 'Desativar usuário?',
+                text: "",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+                if (result.value) {
+                    $.post(urlAtual() + "/deleteUser", {
+                        id_usuario_excluir: id_usuario_excluir
+                    }, function(data) {
+                        let select_form_company = $("#select_form_company").val();
+                        $("#buscar_dados").trigger("click");
+                    });
+
+                    swal(
+                        'Desativado!',
+                        '',
+                        'success'
+                    )
+                } else {
+                    $("#buscar_dados").trigger("click");
+                }
+            })
         });
         $(".adicionar_acesso").on("click", function() {
             desativaBotao(this);
             let id_usuario = $(this).attr("id_user");
             let quantidade_acesso = parseInt($(this).parents(".btnAcessos").find(".quantidade_acesso").html()) + 1;
+            
             if (quantidade_acesso <= 10) {
                 $(this).parents(".btnAcessos").find(".quantidade_acesso").html(quantidade_acesso);
                 $.post(urlAtual() + "/adicionarAcesso", {
@@ -107,6 +129,7 @@
             desativaBotao(this);
             let id_usuario = $(this).attr("id_user");
             $(this).parents(".btnAcessos").find(".quantidade_acesso").html('0');
+            
             $.post(urlAtual() + "/removerTodosAcessos", {
                 id_usuario: id_usuario
             });

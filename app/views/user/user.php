@@ -31,8 +31,10 @@
     </div>
 </div>
 
-<div id="usuarios_ativos"></div>
-<div id="usuarios_desativados"></div>
+<div id="principal">
+    <div id="usuarios_ativos"></div>
+    <div id="usuarios_desativados"></div>
+</div>
 
 <script>
     function loadListUser(company) {

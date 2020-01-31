@@ -82,7 +82,7 @@
                         </div>
 
                         <div class="form-group row" id="comboCidades">
-                            
+
                         </div>
 
                         <div class="form-group row">
@@ -183,21 +183,16 @@
                         showConfirmButton: false,
                         timer: 1500
                     });
-
-                    // Carrega a div do formulario novamente
-                    $("#usuarios_ativos").load(urlAtual() + "/newUser");
+                    $("#buscar_dados").trigger("click");
                 }
             });
         });
     }
-    
+
     function cancelNewUser() {
         $('#novo_usuario_cancelar').on('click', function() {
             desativaBotao('#novo_usuario_cancelar');
-
-            $("#usuarios_ativos").load(urlAtual() + "/newUser", function() {
-                ativarBotao('#novo_usuario_cancelar');
-            });
+            $("#buscar_dados").trigger("click");
         });
     }
 
@@ -207,6 +202,5 @@
         buscar_cidades();
         saveNewUser();
         cancelNewUser();
-
     });
 </script>

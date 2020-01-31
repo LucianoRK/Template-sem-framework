@@ -55,7 +55,7 @@
 <?php } ?>
 <script>
     function editUser(id_user) {
-        $("#usuarios_desativados").html('');
+        $("#usuarios_desativados").empty();
         $("#usuarios_ativos").load(urlAtual() + "/editUser", {
             id_user: id_user
         }, function() {

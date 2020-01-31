@@ -100,19 +100,17 @@ class VALIDATION
             $erros['campos']    = "senha";
             $erros['msgs']      = "Por favor, a senha deve conter ao menos oito caracter sendo letras e números";
             $retorno[]          = $erros;
+        } else if ($senha && $senha != $senha_rep) {
+            $erros['campos']    = "senha";
+            $erros['msgs']      = "As senhas não conferem";
+            $retorno[]          = $erros;
         }
 
         if ($senha && ( strlen($senha_rep) < 7 || !VALIDATION::lettersNumber($senha_rep)) ) {
             $erros['campos']    = "senha_rep";
             $erros['msgs']      = "Por favor, a senha deve conter ao menos oito caracter sendo letras e números";
             $retorno[]          = $erros;
-        }
-
-        if ($senha && $senha != $senha_rep) {
-            $erros['campos']    = "senha";
-            $erros['msgs']      = "As senhas não conferem";
-            $retorno[]          = $erros;
-
+        } else if ($senha && $senha != $senha_rep) {
             $erros['campos']    = "senha_rep";
             $erros['msgs']      = "As senhas não conferem";
             $retorno[]          = $erros;

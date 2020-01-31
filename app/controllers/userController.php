@@ -158,9 +158,9 @@ class userController extends CONTROLLER
             $retorno = VALIDATION::validatePasswordWhenEditing($retorno, $senha, $senha_rep);
         }
 
-        if(!$senha) {
+        if($id_user && !$senha) {
             $senha = $user->getPasswordUser($id_user);
-        } else {
+        } else if ($id_user) {
             $senha = SAFETY::password_hash($senha);
         }
 
