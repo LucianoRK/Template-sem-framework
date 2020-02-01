@@ -2,7 +2,7 @@
 
 class callController extends CONTROLLER
 {
-    public function index()
+    function index()
     {
         $dados            = array();
         $company          = new Company;

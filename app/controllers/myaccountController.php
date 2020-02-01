@@ -3,7 +3,7 @@
 class myaccountController extends controller
 {
 
-    public function index($dados = false)
+    function index($dados = false)
     {
         if (!isset($dados) || empty($dados)) {
             $dados = array();
@@ -42,7 +42,7 @@ class myaccountController extends controller
         }
     }
 
-    public function changeMyPassword()
+    function changeMyPassword()
     {
         $erros          = array();
         $retorno        = array();

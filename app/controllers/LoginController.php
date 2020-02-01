@@ -3,7 +3,7 @@
 class loginController extends CONTROLLER
 {
 
-    public function index($dados = false)
+    function index($dados = false)
     {
         if (!isset($dados) || empty($dados)) {
             $dados = array();
@@ -34,7 +34,7 @@ class loginController extends CONTROLLER
         }
     }
 
-    public function logInto()
+    function logInto()
     {
         $dados          = array();
         $_POST          = ARRAYS::unserializeForm($_POST['dados']);
