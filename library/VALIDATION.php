@@ -73,12 +73,14 @@ class VALIDATION
             $erros['campos']    = "senha";
             $erros['msgs']      = "Por favor, a senha deve conter ao menos oito caracter sendo letras e números";
             $retorno[]          = $erros;
-        }
 
-        if (strlen($senha_rep) < 7 || !VALIDATION::lettersNumber($senha_rep)) {
-            $erros['campos']    = "senha_rep";
-            $erros['msgs']      = "Por favor, a senha deve conter ao menos oito caracter sendo letras e números";
-            $retorno[]          = $erros;
+            if (strlen($senha_rep) < 7 || !VALIDATION::lettersNumber($senha_rep)) {
+                $erros['campos']    = "senha_rep";
+                $erros['msgs']      = "Por favor, a senha deve conter ao menos oito caracter sendo letras e números";
+                $retorno[]          = $erros;
+            }
+
+            return $retorno;
         }
 
         if ($senha != $senha_rep) {
@@ -89,9 +91,9 @@ class VALIDATION
             $erros['campos']    = "senha_rep";
             $erros['msgs']      = "As senhas não conferem";
             $retorno[]          = $erros;
-        }
 
-        return $retorno;
+            return $retorno;
+        }
     }
 
     static function validatePasswordWhenEditing($retorno, $senha, $senha_rep)
@@ -100,22 +102,26 @@ class VALIDATION
             $erros['campos']    = "senha";
             $erros['msgs']      = "Por favor, a senha deve conter ao menos oito caracter sendo letras e números";
             $retorno[]          = $erros;
-        } else if ($senha && $senha != $senha_rep) {
+
+            if ($senha && ( strlen($senha_rep) < 7 || !VALIDATION::lettersNumber($senha_rep)) ) {
+                $erros['campos']    = "senha_rep";
+                $erros['msgs']      = "Por favor, a senha deve conter ao menos oito caracter sendo letras e números";
+                $retorno[]          = $erros;
+            }
+
+            return $retorno;
+        }
+
+        if ($senha && $senha != $senha_rep) {
             $erros['campos']    = "senha";
             $erros['msgs']      = "As senhas não conferem";
             $retorno[]          = $erros;
-        }
-
-        if ($senha && ( strlen($senha_rep) < 7 || !VALIDATION::lettersNumber($senha_rep)) ) {
-            $erros['campos']    = "senha_rep";
-            $erros['msgs']      = "Por favor, a senha deve conter ao menos oito caracter sendo letras e números";
-            $retorno[]          = $erros;
-        } else if ($senha && $senha != $senha_rep) {
+            
             $erros['campos']    = "senha_rep";
             $erros['msgs']      = "As senhas não conferem";
             $retorno[]          = $erros;
-        }
 
-        return $retorno;
+            return $retorno;
+        }
     }
 }

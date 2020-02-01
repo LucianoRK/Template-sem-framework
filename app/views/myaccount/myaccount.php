@@ -38,12 +38,12 @@
                                 <form>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">*Nova senha </label>
-                                        <input type="password" class="form-control nova_senha" name="nova_senha" placeholder="A senha deve conter no mínimo 8 caracteres com letras e números">
+                                        <input type="password" class="form-control senha" name="senha" id="senha" placeholder="A senha deve conter no mínimo 8 caracteres com letras e números">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">*Repita a nova senha </label>
-                                        <input type="password" class="form-control nova_senha_rep" name="nova_senha_rep" placeholder="A senha deve conter no mínimo 8 caracteres com letras e números">
+                                        <input type="password" class="form-control senha_rep" name="senha_rep" id="senha_rep" placeholder="A senha deve conter no mínimo 8 caracteres com letras e números">
                                     </div>
                                 </form>
                                 <button class="btn btn-primary" id="salvar"> Salvar </button>
@@ -66,14 +66,18 @@
                 dados: dados
             }, function(data) {
                 let erros = JSON.parse(data);
+                $("*").removeClass("has-error");
+                $(".msg").empty();
 
-                if (erros['erros']) {
-                    swal({
-                        type: 'error',
-                        title: 'Oops...',
-                        text: erros['erros'],
-                        footer: '',
-                    })
+                if (erros != null) {
+                    $.each(erros, function(indice, value) {
+                        let campoMsg = value['campos'] + 'Msg';
+                        let msg = value['msgs'];
+                        let campo = "<label id='campoMsg' class='control-label text-right msg'> " + msg + " </label>"
+
+                        $("#" + value['campos']).parents(".form-group").addClass("has-error");
+                        $("#" + value['campos']).parent().append(campo);
+                    });
                 } else {
                     swal({
                         type: 'success',
@@ -81,8 +85,8 @@
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    $(".nova_senha").val("");
-                    $(".nova_senha_rep").val("");
+                    $("#senha").val("");
+                    $("#senha_rep").val("");
                 }
                 ativarBotao('#salvar');
             });
